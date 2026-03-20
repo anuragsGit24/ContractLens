@@ -1,5 +1,6 @@
 from __future__ import annotations
 from fastapi import FastAPI
+from backend.api.routes import router
 app = FastAPI(
     title="ContractLens API",
     version="0.1.0",
