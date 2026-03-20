@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile, File
 import pandas as pd
 import io
 import networkx as nx
-from ContractLens.backend.scripts.dynamic_graph_builder import build_dynamic_graph  
+from ContractLens.backend.services.dynamic_graph_builder import build_dynamic_graph  
 app = FastAPI()
 
 

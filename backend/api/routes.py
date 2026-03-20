@@ -3,9 +3,11 @@ from __future__ import annotations
 import shutil
 import uuid
 from pathlib import Path
-
+import pandas as pd
+import io
+import networkx as nx
 from fastapi import APIRouter, File, HTTPException, UploadFile
-
+from backend.services.dynamic_graph_builder import build_dynamic_graph 
 from backend.core.config import get_settings
 from backend.core.constants import RISK_CATEGORIES
 from backend.schemas.contracts import (
@@ -85,7 +87,7 @@ def parse_contract(payload: dict[str, str]) -> dict:
 
 @router.post("/contracts/document-graph", response_model=BuildGraphResponse)
 def document_graph(req: BuildGraphRequest) -> BuildGraphResponse:
-    _, edges, vectors = build_document_graph(req.clauses, req.similarity_threshold)
+    _, edges, vectors = build_dynamic_graph(req.clauses, req.similarity_threshold)
     return BuildGraphResponse(
         clause_count=len(req.clauses),
         edge_count=len(edges),
