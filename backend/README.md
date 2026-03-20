@@ -56,8 +56,6 @@ API docs are at `/docs`.
 ## Placeholders
 
 The law graph (cross-referenced statute graph) is intentionally marked as not implemented.
-This keeps your publication focus on intra-document contradiction detection first.
-
 
 ## Excalidraw Link: 
 https://excalidraw.com/#room=72efef27cd48eb04f08a,8Hu6jhOu09rDDXJ-l9p-hA
