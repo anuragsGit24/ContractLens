@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, List, Dict
 
 from pydantic import BaseModel, Field
 
@@ -68,15 +68,16 @@ class ClauseExplanation(BaseModel):
 
 
 class BuildGraphRequest(BaseModel):
-    clauses: list[Clause]
-    similarity_threshold: float = Field(default=0.75, ge=0.0, le=1.0)
+    clauses: List[str]   # list of clause texts
 
+class EdgeOut(BaseModel):
+    source: int
+    target: int
+    risk: float
 
 class BuildGraphResponse(BaseModel):
-    clause_count: int
-    edge_count: int
-    edges: list[GraphEdge]
-    clause_vectors: list[list[float]]
+    nodes: List[str]
+    edges: List[EdgeOut]
 
 
 class FindContradictionsRequest(BaseModel):

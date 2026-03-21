@@ -7,7 +7,6 @@ import pandas as pd
 import io
 import networkx as nx
 from fastapi import APIRouter, File, HTTPException, UploadFile
-from backend.services.dynamic_graph_builder import build_dynamic_graph 
 from backend.core.config import get_settings
 from backend.core.constants import RISK_CATEGORIES
 from backend.schemas.contracts import (
@@ -26,6 +25,7 @@ from backend.schemas.contracts import (
     RiskResponse,
     UploadResponse,
 )
+from backend.services.dynamic_graph_builder import build_dynamic_graph 
 from backend.services.analyzer import analyze_contract
 from backend.services.document_graph import build_document_graph, find_internal_contradictions
 from backend.services.document_parser import extract_clauses
@@ -87,12 +87,21 @@ def parse_contract(payload: dict[str, str]) -> dict:
 
 @router.post("/contracts/document-graph", response_model=BuildGraphResponse)
 def document_graph(req: BuildGraphRequest) -> BuildGraphResponse:
-    _, edges, vectors = build_dynamic_graph(req.clauses, req.similarity_threshold)
+    # 🔹 Step 1: build graph
+    G = build_dynamic_graph("\n".join(req.clauses))
+    # 🔹 Step 2: extract nodes
+    nodes = [G.nodes[n]["text"] for n in G.nodes]
+    # 🔹 Step 3: extract edges (ONLY risk)
+    edges = []
+    for u, v, data in G.edges(data=True):
+        edges.append({
+            "source": u,
+            "target": v,
+            "risk": data.get("risk", 0)
+        })
     return BuildGraphResponse(
-        clause_count=len(req.clauses),
-        edge_count=len(edges),
-        edges=edges,
-        clause_vectors=vectors,
+        nodes=nodes,
+        edges=edges
     )
 
 
