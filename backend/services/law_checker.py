@@ -42,7 +42,21 @@ def check_against_law(
         matches: list[LawMatch] = []
         for hit in reranked:
             doc = hit.doc
-            law_text = str(doc.payload.get("text") or "")
+            law_text = str(
+                doc.payload.get("description")
+                or doc.payload.get("text")
+                or doc.payload.get("content")
+                or doc.payload.get("body")
+                or ""
+            )
+            act_number = str(
+                doc.payload.get("act_number")
+                or doc.payload.get("section_number")
+                or doc.payload.get("section")
+                or doc.section_number
+                or ""
+            )
+            title = str(doc.payload.get("title") or "")
             nli_out = nli({"text": clause.text, "text_pair": law_text})
             if nli_out and isinstance(nli_out[0], list):
                 nli_out = nli_out[0]
@@ -52,8 +66,10 @@ def check_against_law(
                 matches.append(
                     LawMatch(
                         act=doc.act,
+                        act_number=act_number,
                         section_number=doc.section_number,
-                        title=str(doc.payload.get("title") or ""),
+                        title=title,
+                        description=law_text,
                         text=law_text,
                         retrieval_score=float(doc.score),
                         rerank_score=float(hit.rerank_score),

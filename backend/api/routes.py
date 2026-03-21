@@ -9,6 +9,7 @@ import networkx as nx
 from fastapi import APIRouter, File, HTTPException, UploadFile
 from backend.core.config import get_settings
 from backend.core.constants import RISK_CATEGORIES
+from backend.core.model_registry import get_qdrant_client
 from backend.schemas.contracts import (
     AnalyzeContractRequest,
     AnalyzeContractResponse,
@@ -56,6 +57,40 @@ def metadata() -> MetadataResponse:
             "Document graph is in-memory per analysis run.",
         ],
     )
+
+
+@router.get("/qdrant/health")
+def qdrant_health() -> dict:
+    settings = get_settings()
+    if not settings.qdrant_api_key:
+        return {
+            "status": "error",
+            "qdrant_url": settings.qdrant_url,
+            "collection": settings.qdrant_collection,
+            "api_key_configured": False,
+            "message": "QDRANT_API_KEY is missing. Add it in backend/.env or environment variables.",
+        }
+
+    try:
+        client = get_qdrant_client()
+        collections = client.get_collections().collections
+        names = [c.name for c in collections]
+        return {
+            "status": "ok",
+            "qdrant_url": settings.qdrant_url,
+            "collection": settings.qdrant_collection,
+            "api_key_configured": True,
+            "collection_exists": settings.qdrant_collection in names,
+            "collections_count": len(names),
+        }
+    except Exception as exc:
+        return {
+            "status": "error",
+            "qdrant_url": settings.qdrant_url,
+            "collection": settings.qdrant_collection,
+            "api_key_configured": True,
+            "message": str(exc),
+        }
 
 
 @router.post("/contracts/upload", response_model=UploadResponse)

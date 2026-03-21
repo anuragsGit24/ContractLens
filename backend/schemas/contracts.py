@@ -38,8 +38,10 @@ class ClauseRisk(BaseModel):
 
 class LawMatch(BaseModel):
     act: str
+    act_number: str
     section_number: str
     title: str
+    description: str
     text: str
     retrieval_score: float
     rerank_score: float
