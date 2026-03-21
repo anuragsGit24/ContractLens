@@ -1,11 +1,18 @@
 fastapi
 uvicorn
-python-multipart
-python-dotenv
-requests
-qdrant-client
-sentence-transformers
-transformers
+pandas
+numpy
 networkx
-PyMuPDF
+scikit-learn
+sentence-transformers
+requests
+python-multipart
+pydantic
+
+# OCR + PDF
+pytesseract
+pdf2image
+Pillow
+
+# Optional (if using Streamlit UI)
 streamlit

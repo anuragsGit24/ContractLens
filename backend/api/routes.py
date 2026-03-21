@@ -32,7 +32,7 @@ from backend.services.document_parser import extract_clauses
 from backend.services.law_checker import check_against_law
 from backend.services.llm_explainer import explain_clause
 from backend.services.risk_scorer import score_all_clauses
-
+from backend.services.ocr import PDFtoOCR
 router = APIRouter(prefix="/v1", tags=["contractlens"])
 
 
