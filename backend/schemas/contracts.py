@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, List, Dict
+from typing import Any, List, Optional, Dict
 
 from pydantic import BaseModel, Field
 
@@ -68,16 +68,24 @@ class ClauseExplanation(BaseModel):
 
 
 class BuildGraphRequest(BaseModel):
-    clauses: List[str]   # list of clause texts
+    clauses: list[str]
+
+class NodeOut(BaseModel):
+    id: int
+    text: str
+
 
 class EdgeOut(BaseModel):
     source: int
     target: int
     risk: float
+    difference: float | None = None   # optional but useful
+    base_nodes: dict | None = None    # optional for explainability
+
 
 class BuildGraphResponse(BaseModel):
-    nodes: List[str]
-    edges: List[EdgeOut]
+    nodes: list[NodeOut]
+    edges: list[EdgeOut]
 
 
 class FindContradictionsRequest(BaseModel):
@@ -142,7 +150,7 @@ class UploadResponse(BaseModel):
     contract_id: str
     file_name: str
     stored_path: str
-
+    json_path: str
 
 class MetadataResponse(BaseModel):
     risk_categories: list[str]

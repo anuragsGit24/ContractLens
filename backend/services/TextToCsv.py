@@ -1,43 +1,34 @@
-import re
-import csv
+def text_to_csv(inp, out):
+    import re
+    import csv
 
-inp = "input.txt"
-out = "output.csv"
+    pg = ""
+    ch = ""
+    rows = []
 
-pg = ""
-ch = ""
+    with open(inp, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
 
-rows = []
+            if not line:
+                continue
 
-with open(inp, "r", encoding="utf-8") as f:
-    for line in f:
-        line = line.strip()
+            m = re.match(r"--- Page (\d+) ---", line)
+            if m:
+                pg = m.group(1)
+                continue
 
-        if not line:
-            continue
+            if "CHAPTER" in line:
+                ch = line
+                continue
 
-        # Page detection
-        m = re.match(r"--- Page (\d+) ---", line)
-        if m:
-            pg = m.group(1)
-            continue
+            m = re.match(r"(\d+[A-Z]?)\.\s*(.+)", line)
+            if m:
+                sec = m.group(1)
+                title = m.group(2)
+                rows.append([sec, title, ch, pg])
 
-        # Chapter detection
-        if "CHAPTER" in line:
-            ch = line
-            continue
-
-        # Section detection
-        m = re.match(r"(\d+[A-Z]?)\.\s*(.+)", line)
-        if m:
-            sec = m.group(1)
-            title = m.group(2)
-            rows.append([sec, title, ch, pg])
-
-# Write CSV
-with open(out, "w", newline="", encoding="utf-8") as f:
-    writer = csv.writer(f)
-    writer.writerow(["Section", "Title", "Chapter", "Page"])
-    writer.writerows(rows)
-
-print("CSV created successfully")
+    with open(out, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Section", "Title", "Chapter", "Page"])
+        writer.writerows(rows)
