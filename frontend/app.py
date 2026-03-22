@@ -32,14 +32,14 @@ if st.button("Analyze"):
             upload.raise_for_status()
             upload_payload = upload.json()
 
-        # with st.spinner("Running analysis pipeline..."):
-        #     analyze = requests.post(
-        #         f"{API_BASE}/v1/contracts/analyze",
-        #         json={"contract_path": upload_payload["stored_path"]},
-        #         timeout=300,
-        #     )
-        #     analyze.raise_for_status()
-        #     result = analyze.json()
+        with st.spinner("Running analysis pipeline..."):
+            analyze = requests.post(
+                f"{API_BASE}/v1/contracts/analyze",
+                json={"contract_path": upload_payload["stored_path"]},
+                timeout=300,
+            )
+            analyze.raise_for_status()
+            result = analyze.json()
         
         with st.spinner("Extracting clauses..."):
             parse = requests.post(
@@ -79,24 +79,24 @@ if st.button("Analyze"):
         st.subheader("Graph Edges")
         st.write(graph_result.get("edges", []))
 
-        # st.success("Analysis complete")
-        # st.subheader("High Risk Clauses")
-        # for item in result.get("risks", []):
-        #     if item.get("risk_level") == "high":
-        #         st.write(
-        #             f"Clause {item['clause_index']}: {item['top_category']} (score={item['top_score']:.3f})"
-        #         )
+        st.success("Analysis complete")
+        st.subheader("High Risk Clauses")
+        for item in result.get("risks", []):
+            if item.get("risk_level") == "high":
+                st.write(
+                    f"Clause {item['clause_index']}: {item['top_category']} (score={item['top_score']:.3f})"
+                )
 
-        # st.subheader("Internal Contradictions")
-        # for c in result.get("internal_contradictions", []):
-        #     st.write(
-        #         f"Clause {c['clause_a_index']} vs Clause {c['clause_b_index']} "
-        #         f"(score={c['contradiction_score']:.3f})"
-        #     )
+        st.subheader("Internal Contradictions")
+        for c in result.get("internal_contradictions", []):
+            st.write(
+                f"Clause {c['clause_a_index']} vs Clause {c['clause_b_index']} "
+                f"(score={c['contradiction_score']:.3f})"
+            )
 
-        # st.subheader("Explanations")
-        # for e in result.get("explanations", []):
-        #     st.markdown(f"### Clause {e['clause_index']}")
-        #     st.write(e.get("explanation", ""))
-        #     if e.get("warning"):
-        #         st.warning(e["warning"])
+        st.subheader("Explanations")
+        for e in result.get("explanations", []):
+            st.markdown(f"### Clause {e['clause_index']}")
+            st.write(e.get("explanation", ""))
+            if e.get("warning"):
+                st.warning(e["warning"])
