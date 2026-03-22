@@ -63,5 +63,5 @@ def get_settings() -> Settings:
         nli_model=os.getenv("NLI_MODEL", "cross-encoder/nli-deberta-v3-small"),
         zero_shot_model=os.getenv("ZERO_SHOT_MODEL", "facebook/bart-large-mnli"),
         ollama_url=os.getenv("OLLAMA_URL", "http://localhost:11434"),
-        ollama_model=os.getenv("OLLAMA_MODEL", "phi3"),
+        ollama_model=os.getenv("OLLAMA_MODEL", "llama3:latest"),
     )

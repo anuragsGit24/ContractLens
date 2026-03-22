@@ -1,5 +1,5 @@
 fastapi
-uvicorn
+uvicorn[standard]
 pandas
 numpy
 networkx
@@ -8,11 +8,8 @@ sentence-transformers
 requests
 python-multipart
 pydantic
-
-# OCR + PDF
 pytesseract
 pdf2image
 Pillow
-
-# Optional (if using Streamlit UI)
 streamlit
+python-dotenv
