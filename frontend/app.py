@@ -52,7 +52,7 @@ if st.button("Analyze"):
 
 
         with st.spinner("Building clause graph..."):
-            print(clauses_payload)
+            # print(clauses_payload)
             graph = requests.post(
                 f"{API_BASE}/v1/contracts/document-graph",
                 json={
@@ -66,9 +66,9 @@ if st.button("Analyze"):
                 timeout=120,
             )
 
-            print("STATUS:", graph.status_code)
-            print("RESPONSE:", graph.text)
-            print(clauses_payload)
+            # print("STATUS:", graph.status_code)
+            # print("RESPONSE:", graph.text)
+            # print(clauses_payload)
 
             graph.raise_for_status()
             graph_result = graph.json()

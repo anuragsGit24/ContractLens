@@ -24,7 +24,7 @@ class PDFtoOCR:
 
         return full_text
 
-    # 🔥 NEW: text → clauses JSON
+    # NEW: text → clauses JSON
     def text_to_json(self, text):
         # split into clauses (basic but effective)
         raw_clauses = re.split(r"\n{2,}", text)
@@ -42,7 +42,7 @@ class PDFtoOCR:
 
         return clauses
 
-    # 🔥 FINAL: PDF → JSON
+    # FINAL: PDF → JSON
     def pdf_to_json(self, pdf_path):
         text = self.pdf_to_text(pdf_path)
         return self.text_to_json(text)
