@@ -20,9 +20,6 @@ class Settings:
     qdrant_api_key: str | None
     qdrant_collection: str
     embedding_model: str
-    reranker_model: str
-    nli_model: str
-    zero_shot_model: str
     ollama_url: str
     ollama_model: str
 
@@ -59,9 +56,6 @@ def get_settings() -> Settings:
         qdrant_api_key=os.getenv("QDRANT_API_KEY"),
         qdrant_collection=os.getenv("QDRANT_COLLECTION", "contractlens_legal"),
         embedding_model=os.getenv("EMBEDDING_MODEL", "law-ai/InLegalBERT"),
-        reranker_model=os.getenv("RERANKER_MODEL", "cross-encoder/ms-marco-MiniLM-L-6-v2"),
-        nli_model=os.getenv("NLI_MODEL", "cross-encoder/nli-deberta-v3-small"),
-        zero_shot_model=os.getenv("ZERO_SHOT_MODEL", "facebook/bart-large-mnli"),
         ollama_url=os.getenv("OLLAMA_URL", "http://localhost:11434"),
-        ollama_model=os.getenv("OLLAMA_MODEL", "phi3"),
+        ollama_model=os.getenv("OLLAMA_MODEL", "llama3:latest"),
     )

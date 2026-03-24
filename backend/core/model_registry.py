@@ -4,43 +4,25 @@ from functools import lru_cache
 from typing import TYPE_CHECKING
 
 from backend.core.config import get_settings
+from backend.services.model_singleton import embed, embed_single
 
 if TYPE_CHECKING:
     from qdrant_client import QdrantClient
-    from backend.rag.embeddings import EmbeddingModel
-    from backend.rag.reranker import CrossEncoderReranker
+
+
+class EmbeddingAdapter:
+    """Compatibility adapter for existing call sites expecting embedder methods."""
+
+    def embed_texts(self, texts, batch_size: int = 32):
+        return embed(texts, batch_size=batch_size).tolist()
+
+    def embed_query(self, query: str):
+        return embed_single(query).tolist()
 
 
 @lru_cache(maxsize=2)
-def get_embedder() -> "EmbeddingModel":
-    from backend.rag.embeddings import EmbeddingModel
-
-    settings = get_settings()
-    return EmbeddingModel(model_name=settings.embedding_model)
-
-
-@lru_cache(maxsize=2)
-def get_reranker() -> "CrossEncoderReranker":
-    from backend.rag.reranker import CrossEncoderReranker
-
-    settings = get_settings()
-    return CrossEncoderReranker(model_name=settings.reranker_model)
-
-
-@lru_cache(maxsize=2)
-def get_nli_pipeline():
-    from transformers import pipeline
-
-    settings = get_settings()
-    return pipeline("text-classification", model=settings.nli_model, truncation=True, top_k=None)
-
-
-@lru_cache(maxsize=2)
-def get_zero_shot_pipeline():
-    from transformers import pipeline
-
-    settings = get_settings()
-    return pipeline("zero-shot-classification", model=settings.zero_shot_model)
+def get_embedder() -> EmbeddingAdapter:
+    return EmbeddingAdapter()
 
 
 @lru_cache(maxsize=2)
@@ -50,4 +32,4 @@ def get_qdrant_client() -> "QdrantClient":
     settings = get_settings()
     if not settings.qdrant_api_key:
         raise RuntimeError("QDRANT_API_KEY is not configured in backend/.env")
-    return QdrantClient(url=settings.qdrant_url, api_key=settings.qdrant_api_key)
+    return QdrantClient(url=settings.qdrant_url, api_key=settings.qdrant_api_key, timeout=8)

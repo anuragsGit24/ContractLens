@@ -75,7 +75,7 @@ def retrieve_top_sections(query: str, top_k_raw: int = 10, top_k_final: int = 3)
         raise RuntimeError("QDRANT_API_KEY not set (backend/.env)")
 
     embedding_model_name = os.getenv("EMBEDDING_MODEL", DEFAULT_EMBEDDING_MODEL)
-    reranker_model_name = os.getenv("RERANKER_MODEL", "cross-encoder/ms-marco-MiniLM-L-6-v2")
+    reranker_model_name = os.getenv("RERANKER_MODEL", "law-ai/InLegalBERT")
 
     embedder = _get_embedder(model_name=embedding_model_name)
     retriever = _get_retriever(url=qdrant_url, api_key=api_key, collection_name=collection_name)

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from functools import lru_cache
 from typing import Iterable
 
 import requests
@@ -16,6 +17,16 @@ from backend.schemas.contracts import (
 )
 
 _CITATION_RE = re.compile(r"\b(?:Section|Article)\s+([0-9]{1,3}[A-Za-z]?)\b", re.IGNORECASE)
+
+
+@lru_cache(maxsize=1)
+def _ollama_available(base_url: str) -> bool:
+    """Check once per process to avoid repeated long timeouts when Ollama is down."""
+    try:
+        resp = requests.get(f"{base_url.rstrip('/')}/api/tags", timeout=2)
+        return bool(resp.ok)
+    except Exception:
+        return False
 
 
 def build_prompt(
@@ -44,7 +55,12 @@ def build_prompt(
         f"Top Risk Category: {risk.top_category}\n"
         f"Risk Score: {risk.top_score:.3f}\n"
         f"Risk Level: {risk.risk_level}\n\n"
-        "Internal Contradictions:\n"
+        + (
+            f"Relative Risk Level (dataset-calibrated): {risk.risk_level_relative}\n\n"
+            if risk.risk_level_relative
+            else ""
+        )
+        + "Internal Contradictions:\n"
         + ("\n".join(contradiction_lines) if contradiction_lines else "- None")
         + "\n\nRetrieved Law Matches:\n"
         + ("\n".join(law_lines) if law_lines else "- None")
@@ -93,19 +109,36 @@ def explain_clause(
     law_matches: list[LawMatch],
 ) -> ClauseExplanation:
     settings = get_settings()
+    base_url = settings.ollama_url.rstrip("/")
     prompt = build_prompt(clause=clause, risk=risk, contradictions=contradictions, law_matches=law_matches)
 
     warning = None
     explanation = ""
+    if not _ollama_available(base_url):
+        warning = f"Ollama unavailable at {base_url}; skipped remote generation for fast response."
+        explanation = (
+            "LLM explanation is temporarily unavailable. "
+            "Use risk score and retrieved law matches for manual review."
+        )
+        verification = verify_citations(explanation, law_matches)
+        return ClauseExplanation(
+            clause_index=clause.index,
+            explanation=explanation,
+            prompt=prompt,
+            citation_verification=verification,
+            model_name=settings.ollama_model,
+            warning=warning,
+        )
+
     try:
         response = requests.post(
-            f"{settings.ollama_url.rstrip('/')}/api/generate",
+            f"{base_url}/api/generate",
             json={
                 "model": settings.ollama_model,
                 "prompt": prompt,
                 "stream": False,
             },
-            timeout=120,
+            timeout=25,
         )
         response.raise_for_status()
         payload = response.json()

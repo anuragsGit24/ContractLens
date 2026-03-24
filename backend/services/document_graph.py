@@ -3,17 +3,11 @@ from __future__ import annotations
 from itertools import combinations
 
 import networkx as nx
+import numpy as np
 
-from backend.core.model_registry import get_embedder, get_nli_pipeline
 from backend.schemas.contracts import Clause, GraphEdge, InternalContradiction
-
-
-def _contradiction_score(nli_output: list[dict]) -> float:
-    for item in nli_output:
-        label = str(item.get("label", "")).lower()
-        if "contradict" in label:
-            return float(item.get("score", 0.0))
-    return 0.0
+from backend.services.contradiction_detector import detect_contradiction
+from backend.services.model_singleton import embed
 
 
 def build_document_graph(
@@ -23,27 +17,29 @@ def build_document_graph(
     if not clauses:
         return nx.Graph(), [], []
 
-    embedder = get_embedder()
-    clause_texts = [c.text for c in clauses]
-    vectors = embedder.embed_texts(clause_texts)
+    clause_texts = [c.text[:1200] for c in clauses]
+    vectors = embed(clause_texts).tolist()
 
     graph = nx.Graph()
     for clause in clauses:
         graph.add_node(clause.index, label=clause.label, text=clause.text)
 
+    # Vectors are normalized, so matrix multiplication yields cosine similarity.
+    mat = np.asarray(vectors, dtype=np.float32)
+    sim_matrix = mat @ mat.T
+
     edges: list[GraphEdge] = []
     for i, j in combinations(range(len(clauses)), 2):
-        # Vectors are L2-normalized in embedder, so dot product is cosine similarity.
-        similarity = sum(a * b for a, b in zip(vectors[i], vectors[j]))
+        similarity = float(sim_matrix[i, j])
         if similarity >= similarity_threshold:
             source = clauses[i].index
             target = clauses[j].index
-            graph.add_edge(source, target, similarity=float(similarity))
+            graph.add_edge(source, target, similarity=similarity)
             edges.append(
                 GraphEdge(
                     source_index=source,
                     target_index=target,
-                    similarity=float(similarity),
+                    similarity=similarity,
                 )
             )
 
@@ -54,30 +50,50 @@ def find_internal_contradictions(
     clauses: list[Clause],
     edges: list[GraphEdge],
     contradiction_threshold: float = 0.68,
+    max_pairs: int = 25,
 ) -> list[InternalContradiction]:
     if not clauses or not edges:
         return []
 
-    nli = get_nli_pipeline()
     by_index = {c.index: c for c in clauses}
 
+    conflict_zone_edges = [e for e in edges if 0.72 < float(e.similarity) < 0.89]
+    if conflict_zone_edges:
+        candidate_edges = sorted(conflict_zone_edges, key=lambda e: e.similarity, reverse=True)
+    else:
+        # If all similarities are very high, pick edges closest to the conflict center.
+        target = 0.90
+        candidate_edges = sorted(edges, key=lambda e: abs(float(e.similarity) - target))
+    if max_pairs > 0:
+        candidate_edges = candidate_edges[:max_pairs]
+
     contradictions: list[InternalContradiction] = []
-    for edge in edges:
+    for edge in candidate_edges:
         clause_a = by_index.get(edge.source_index)
         clause_b = by_index.get(edge.target_index)
         if not clause_a or not clause_b:
             continue
 
-        output = nli({"text": clause_a.text, "text_pair": clause_b.text})
-        if output and isinstance(output[0], list):
-            output = output[0]
-        score = _contradiction_score(output)
-        if score >= contradiction_threshold:
+        decision = detect_contradiction(
+            text_a=clause_a.text,
+            text_b=clause_b.text,
+            sim_score=float(edge.similarity),
+        )
+        score = float(decision.get("confidence", 0.0))
+        # Keep threshold semantics in response flow.
+        model_like_score = score if score <= 1.0 else np.clip(score, 0.0, 1.0)
+        is_contradiction = bool(decision.get("is_contradiction", False))
+        is_tension = "possible tension" in str(decision.get("reason", "")).lower()
+        tension_threshold = max(0.30, contradiction_threshold * 0.55)
+        if is_contradiction and (
+            model_like_score >= contradiction_threshold
+            or (is_tension and model_like_score >= tension_threshold)
+        ):
             contradictions.append(
                 InternalContradiction(
                     clause_a_index=clause_a.index,
                     clause_b_index=clause_b.index,
-                    contradiction_score=score,
+                    contradiction_score=model_like_score,
                 )
             )
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, List, Dict
+from typing import Any, List, Optional, Dict
 
 from pydantic import BaseModel, Field
 
@@ -34,6 +34,8 @@ class ClauseRisk(BaseModel):
     top_score: float
     category_scores: dict[str, float]
     risk_level: str
+    risk_level_absolute: str | None = None
+    risk_level_relative: str | None = None
 
 
 class LawMatch(BaseModel):
@@ -70,16 +72,24 @@ class ClauseExplanation(BaseModel):
 
 
 class BuildGraphRequest(BaseModel):
-    clauses: List[str]   # list of clause texts
+    clauses: list[str]
+
+class NodeOut(BaseModel):
+    id: int
+    text: str
+
 
 class EdgeOut(BaseModel):
     source: int
     target: int
     risk: float
+    difference: float | None = None   # optional but useful
+    base_nodes: dict | None = None    # optional for explainability
+
 
 class BuildGraphResponse(BaseModel):
-    nodes: List[str]
-    edges: List[EdgeOut]
+    nodes: list[NodeOut]
+    edges: list[EdgeOut]
 
 
 class FindContradictionsRequest(BaseModel):
@@ -127,6 +137,8 @@ class AnalyzeContractRequest(BaseModel):
     top_k_final: int = Field(default=3, ge=1, le=20)
     explain_top_risks_only: bool = True
     explain_risk_threshold: float = Field(default=0.6, ge=0.0, le=1.0)
+    explain_max_clauses: int = Field(default=0, ge=0, le=50)
+    law_check_max_clauses: int = Field(default=8, ge=0, le=500)
 
 
 class AnalyzeContractResponse(BaseModel):
@@ -144,7 +156,7 @@ class UploadResponse(BaseModel):
     contract_id: str
     file_name: str
     stored_path: str
-
+    json_path: str
 
 class MetadataResponse(BaseModel):
     risk_categories: list[str]

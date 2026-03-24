@@ -59,3 +59,30 @@ The law graph (cross-referenced statute graph) is intentionally marked as not im
 
 ## Excalidraw Link: 
 https://excalidraw.com/#room=72efef27cd48eb04f08a,8Hu6jhOu09rDDXJ-l9p-hA
+
+## Windows Setup:
+
+1. Install Tesseract OCR
+
+Download: https://github.com/tesseract-ocr/tesseract
+
+Install using default settings
+
+Verify installation:
+
+tesseract --version
+
+2. Install Poppler
+
+Download Poppler:
+https://github.com/oschwartz10612/poppler-windows/releases/
+
+Extract ZIP file
+
+Move extracted folder to:
+
+C:\poppler
+
+Final structure should look like:
+
+C:\poppler\poppler-xx\Library\bin\pdftoppm.exe

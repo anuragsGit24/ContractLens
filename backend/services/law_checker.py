@@ -1,17 +1,12 @@
 from __future__ import annotations
 
+import numpy as np
+
 from backend.core.config import get_settings
-from backend.core.model_registry import get_embedder, get_nli_pipeline, get_qdrant_client, get_reranker
+from backend.core.model_registry import get_qdrant_client
 from backend.rag.retriever import QdrantRetriever
 from backend.schemas.contracts import Clause, ClauseLawCheck, LawMatch
-
-
-def _contradiction_score(nli_output: list[dict]) -> float:
-    for item in nli_output:
-        label = str(item.get("label", "")).lower()
-        if "contradict" in label:
-            return float(item.get("score", 0.0))
-    return 0.0
+from backend.services.contradiction_detector import detect_contradiction
 
 
 def check_against_law(
@@ -26,22 +21,56 @@ def check_against_law(
 
     settings = get_settings()
     qdrant = get_qdrant_client()
-    embedder = get_embedder()
     retriever = QdrantRetriever(client=qdrant, collection_name=settings.qdrant_collection)
-    reranker = get_reranker()
-    nli = get_nli_pipeline()
 
-    vectors = clause_vectors if clause_vectors else embedder.embed_texts([c.text for c in clauses])
+    if clause_vectors is None:
+        from backend.services.model_singleton import embed
+
+        vectors = embed([c.text[:1200] for c in clauses]).tolist()
+    else:
+        vectors = clause_vectors
+
+    raw_hits_by_clause: list[list] = []
+    text_pool: list[str] = []
+    for idx, _ in enumerate(clauses):
+        vector = vectors[idx]
+        try:
+            raw_hits = retriever.search(query_vector=vector, limit=top_k_raw, act=None)
+        except Exception:
+            raw_hits = []
+        raw_hits_by_clause.append(raw_hits)
+        for doc in raw_hits:
+            text_pool.append(str(doc.text or "")[:512])
+
+    unique_texts = list(dict.fromkeys(text_pool))
+    text_to_vec: dict[str, np.ndarray] = {}
+    if unique_texts:
+        from backend.services.model_singleton import embed
+
+        vecs = embed(unique_texts)
+        for i, text in enumerate(unique_texts):
+            text_to_vec[text] = vecs[i]
 
     output: list[ClauseLawCheck] = []
     for idx, clause in enumerate(clauses):
-        vector = vectors[idx]
-        raw_hits = retriever.search(query_vector=vector, limit=top_k_raw, act=None)
-        reranked = reranker.rerank(query=clause.text, docs=raw_hits, top_k=top_k_final)
+        clause_vec = np.asarray(vectors[idx], dtype=np.float32)
+        raw_hits = raw_hits_by_clause[idx]
+
+        scored_hits: list[tuple[float, object]] = []
+        for doc in raw_hits:
+            text = str(doc.text or "")[:512]
+            vec = text_to_vec.get(text)
+            if vec is None:
+                score = float(doc.score)
+            else:
+                score = float(np.dot(vec, clause_vec))
+            scored_hits.append((score, doc))
+
+        scored_hits.sort(key=lambda item: item[0], reverse=True)
+        top_hits = scored_hits[:top_k_final]
 
         matches: list[LawMatch] = []
-        for hit in reranked:
-            doc = hit.doc
+        for sim_score, doc in top_hits:
             law_text = str(
                 doc.payload.get("description")
                 or doc.payload.get("text")
@@ -57,12 +86,14 @@ def check_against_law(
                 or ""
             )
             title = str(doc.payload.get("title") or "")
-            nli_out = nli({"text": clause.text, "text_pair": law_text})
-            if nli_out and isinstance(nli_out[0], list):
-                nli_out = nli_out[0]
-            contradiction_score = _contradiction_score(nli_out)
+            contradiction = detect_contradiction(
+                text_a=clause.text,
+                text_b=law_text,
+                sim_score=sim_score,
+            )
+            contradiction_score = float(contradiction.get("confidence", 0.0))
 
-            if contradiction_score >= contradiction_threshold:
+            if bool(contradiction.get("is_contradiction", False)) and contradiction_score >= contradiction_threshold:
                 matches.append(
                     LawMatch(
                         act=doc.act,
@@ -72,7 +103,7 @@ def check_against_law(
                         description=law_text,
                         text=law_text,
                         retrieval_score=float(doc.score),
-                        rerank_score=float(hit.rerank_score),
+                        rerank_score=float(sim_score),
                         contradiction_score=float(contradiction_score),
                     )
                 )

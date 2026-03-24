@@ -5,12 +5,12 @@ import networkx as nx
 from pathlib import Path
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
+
+from backend.services.model_singleton import embed
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 EMBED_PATH = BASE_DIR / "data" / "default" / "embeddings.npy"
 GRAPH_PATH = BASE_DIR / "data" / "default" / "legal_graph.pkl"
-model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 # ─────────────────────────────────────────
@@ -57,7 +57,7 @@ def build_internal_graph(clauses):
 # 4. ASSIGN WEIGHTS FROM BASE GRAPH
 # ─────────────────────────────────────────
 def assign_weights(internal_G, clauses, base_G, clause_types, base_embeddings):
-    clause_embeddings = model.encode(clauses)
+    clause_embeddings = embed(clauses)
 
     # similarity of each clause to base clause types
     sim_matrix = cosine_similarity(clause_embeddings, base_embeddings)

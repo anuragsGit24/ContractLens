@@ -1,4 +1,8 @@
 from __future__ import annotations
+
+from backend.services import model_singleton  # noqa: F401
+from backend.services import risk_scorer  # noqa: F401
+
 from fastapi import FastAPI
 from backend.api.routes import router
 app = FastAPI(

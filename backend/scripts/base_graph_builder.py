@@ -14,7 +14,6 @@ CSV_PATH = BASE_DIR / "data" / "default" / "base_contract_clauses.csv"
 GRAPH_PATH = BASE_DIR / "data" / "default" / "legal_graph.pkl"
 
 
-# model = SentenceTransformer("all-MiniLM-L6-v2")
 SIMILARITY_THRESH = 0.25
 
 
