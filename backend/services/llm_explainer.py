@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import re
-from functools import lru_cache
 from typing import Iterable
 
 import requests
@@ -19,9 +18,8 @@ from backend.schemas.contracts import (
 _CITATION_RE = re.compile(r"\b(?:Section|Article)\s+([0-9]{1,3}[A-Za-z]?)\b", re.IGNORECASE)
 
 
-@lru_cache(maxsize=1)
 def _ollama_available(base_url: str) -> bool:
-    """Check once per process to avoid repeated long timeouts when Ollama is down."""
+    """Use a quick probe before generation and retry each call to avoid stale status."""
     try:
         resp = requests.get(f"{base_url.rstrip('/')}/api/tags", timeout=2)
         return bool(resp.ok)
@@ -143,6 +141,12 @@ def explain_clause(
         response.raise_for_status()
         payload = response.json()
         explanation = str(payload.get("response") or "").strip()
+        if not explanation:
+            warning = "Ollama returned an empty response payload."
+            explanation = (
+                "LLM explanation returned no text. "
+                "Use risk score and retrieved law matches for manual review."
+            )
     except Exception as exc:
         warning = f"Ollama call failed: {exc}"
         explanation = (

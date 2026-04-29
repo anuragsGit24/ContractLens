@@ -56,6 +56,6 @@ def get_settings() -> Settings:
         qdrant_api_key=os.getenv("QDRANT_API_KEY"),
         qdrant_collection=os.getenv("QDRANT_COLLECTION", "contractlens_legal"),
         embedding_model=os.getenv("EMBEDDING_MODEL", "law-ai/InLegalBERT"),
-        ollama_url=os.getenv("OLLAMA_URL", "http://localhost:11434"),
-        ollama_model=os.getenv("OLLAMA_MODEL", "llama3:latest"),
+        ollama_url=os.getenv("OLLAMA_URL", "http://127.0.0.1:11434"),
+        ollama_model=os.getenv("OLLAMA_MODEL", "llama3.2:latest"),
     )
