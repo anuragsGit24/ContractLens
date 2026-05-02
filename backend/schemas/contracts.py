@@ -130,15 +130,22 @@ class ExplainRequest(BaseModel):
 
 
 class AnalyzeContractRequest(BaseModel):
+    """
+    Full contract analysis request with Fast Mode + threshold control.
+    
+    Fast Mode settings:
+    - explain_max_clauses: Higher value (6+) for deeper analysis, lower (3) for fast mode
+    - law_check_max_clauses: Higher value (14+) for thorough checking, lower (8) for fast mode
+    """
     contract_path: str
-    similarity_threshold: float = Field(default=0.75, ge=0.0, le=1.0)
-    contradiction_threshold: float = Field(default=0.68, ge=0.0, le=1.0)
-    top_k_raw: int = Field(default=10, ge=1, le=50)
-    top_k_final: int = Field(default=3, ge=1, le=20)
-    explain_top_risks_only: bool = True
-    explain_risk_threshold: float = Field(default=0.6, ge=0.0, le=1.0)
-    explain_max_clauses: int = Field(default=0, ge=0, le=50)
-    law_check_max_clauses: int = Field(default=8, ge=0, le=500)
+    similarity_threshold: float = Field(default=0.75, ge=0.0, le=1.0, description="Graph edge creation threshold")
+    contradiction_threshold: float = Field(default=0.68, ge=0.0, le=1.0, description="Contradiction detection threshold")
+    top_k_raw: int = Field(default=10, ge=1, le=50, description="Raw retrieval candidates from Qdrant")
+    top_k_final: int = Field(default=3, ge=1, le=20, description="Final law matches per clause")
+    explain_top_risks_only: bool = Field(default=True, description="Only explain clauses above explain_risk_threshold")
+    explain_risk_threshold: float = Field(default=0.6, ge=0.0, le=1.0, description="Risk score floor for explanation (user-configurable)")
+    explain_max_clauses: int = Field(default=3, ge=0, le=50, description="Max clauses to generate explanations for (Fast Mode: 3, Full: 6)")
+    law_check_max_clauses: int = Field(default=8, ge=0, le=500, description="Max clauses to check against law (Fast Mode: 8, Full: 14)")
 
 
 class AnalyzeContractResponse(BaseModel):
