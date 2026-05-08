@@ -5,3 +5,4 @@
 /data/users/contracts/*
 !/data/users/.gitkeep
 !/data/users/contracts/.gitkeep
+/frontend/lib/*

@@ -3,11 +3,18 @@ from __future__ import annotations
 import html
 import random
 import re
+import tempfile
 from datetime import datetime
 from typing import Any
 
 import requests
 import streamlit as st
+from streamlit.components.v1 import html as st_html
+
+try:
+	from pyvis.network import Network
+except ImportError:
+	Network = None
 
 
 def _get_api_base() -> str:
@@ -1159,7 +1166,7 @@ def _runtime_status(api_base: str) -> dict[str, bool]:
 	status = {
 		"inlegalbert": False,
 		"qdrant": False,
-		"phi3": False,
+		"phi3": False,  # llama3:latest status (displayed as 'Local LLM')
 	}
 
 	try:
@@ -1178,7 +1185,7 @@ def _runtime_status(api_base: str) -> dict[str, bool]:
 		tags = requests.get("http://127.0.0.1:11434/api/tags", timeout=2)
 		if tags.ok:
 			models = [str(model.get("name") or "").lower() for model in tags.json().get("models", [])]
-			status["phi3"] = any("phi3" in model or "phi-3" in model for model in models)
+			status["phi3"] = any("llama3" in model or "llama-3" in model for model in models)
 	except requests.RequestException:
 		status["phi3"] = False
 
@@ -1374,7 +1381,7 @@ def _render_settings_page() -> None:
 			'<div class="model-row"><span>Model</span><strong>InLegalBERT</strong></div>'
 			'<div class="model-row"><span>Dimensions</span><strong>768</strong></div>'
 			'<div class="model-row"><span>Vector DB</span><strong>Qdrant Cloud</strong></div>'
-			'<div class="model-row"><span>Local LLM</span><strong>Phi-3-mini</strong></div>'
+			'<div class="model-row"><span>Local LLM</span><strong>llama3:latest (Ollama)</strong></div>'
 			"</div>"
 		),
 		unsafe_allow_html=True,
@@ -1458,6 +1465,7 @@ def _run_analysis(pdf: Any) -> None:
 					"explain_top_risks_only": False,
 					"explain_max_clauses": explain_max,
 					"law_check_max_clauses": law_max,
+					"explain_risk_threshold": float(st.session_state.high_threshold),
 				},
 				timeout=360,
 			)
@@ -1554,6 +1562,162 @@ def _build_panel_rows_html(rows: list[dict[str, Any]]) -> str:
 		)
 	return "".join(html_rows)
 
+
+def _format_clause_tooltip(text: str, line_width: int = 88) -> str:
+	clean = (text or "").strip()
+	if not clean:
+		return "No clause text available"
+	wrapped: list[str] = []
+	for i in range(0, len(clean), line_width):
+		wrapped.append(clean[i:i + line_width])
+	return "<br>".join(html.escape(part) for part in wrapped)
+
+def _render_knowledge_graph(clauses, graph_edges, risks=None, contradictions=None):
+    if Network is None:
+        _notice("Pyvis not installed", tone="high")
+        return
+
+    if not clauses:
+        _notice("No clauses found", tone="info")
+        return
+
+    import json
+    from collections import defaultdict
+
+    net = Network(
+        height="650px",
+        width="100%",
+        directed=False,
+        bgcolor="#FFFFFF",
+        font_color="#1F2937",
+        notebook=False,
+    )
+
+    net.force_atlas_2based()
+
+    # -------------------------
+    # Risk mapping
+    # -------------------------
+    risk_map = {}
+    if risks:
+        for r in risks:
+            risk_map[int(r.get("clause_index"))] = r.get("_ui_level", "LOW")
+
+    def get_color(level):
+        if level == "HIGH":
+            return "#ef4444"
+        elif level == "MEDIUM":
+            return "#f59e0b"
+        return "#22c55e"
+
+    # -------------------------
+    # Add nodes
+    # -------------------------
+    for clause in clauses:
+        idx = clause.get("index")
+        if idx is None:
+            continue
+
+        level = risk_map.get(int(idx), "LOW")
+        color = get_color(level)
+
+        tooltip = f"""
+        <b>Clause {idx}</b><br>
+        Risk: {level}<br><br>
+        {_format_clause_tooltip(clause.get("text", ""))}
+        """
+
+        net.add_node(
+            int(idx),
+            label=f"{idx}",
+            title=tooltip,
+            color=color,
+            size=20 if level == "HIGH" else 15,
+        )
+
+    # -------------------------
+    # Contradiction pairs
+    # -------------------------
+    contradiction_pairs = set()
+    if contradictions:
+        for c in contradictions:
+            a = c.get("clause_a_index")
+            b = c.get("clause_b_index")
+            if a and b:
+                contradiction_pairs.add((int(a), int(b)))
+
+    # -------------------------
+    # Edge filtering
+    # -------------------------
+    SIM_THRESHOLD = 0.75
+    MAX_EDGES_PER_NODE = 3
+    edge_count = defaultdict(int)
+
+    sorted_edges = sorted(
+        graph_edges,
+        key=lambda e: float(e.get("similarity", 0)),
+        reverse=True,
+    )
+
+    for edge in sorted_edges:
+        s = edge.get("source_index")
+        t = edge.get("target_index")
+
+        if s is None or t is None or s == t:
+            continue
+
+        s, t = int(s), int(t)
+        sim = float(edge.get("similarity", 0))
+
+        if sim < SIM_THRESHOLD:
+            continue
+
+        if edge_count[s] >= MAX_EDGES_PER_NODE or edge_count[t] >= MAX_EDGES_PER_NODE:
+            continue
+
+        # Highlight contradictions
+        is_contradiction = (s, t) in contradiction_pairs or (t, s) in contradiction_pairs
+
+        net.add_edge(
+            s,
+            t,
+            value=sim * 10,
+            color="red" if is_contradiction else "#CBD5F5",
+            width=3 if is_contradiction else 1,
+            title=f"Similarity: {sim:.2f}",
+        )
+
+        edge_count[s] += 1
+        edge_count[t] += 1
+
+    # -------------------------
+    # Static + clean layout
+    # -------------------------
+    net.set_options(json.dumps({
+        "physics": {
+            "enabled": False
+        },
+        "interaction": {
+            "hover": True,
+            "tooltipDelay": 200,
+            "navigationButtons": True,
+            "keyboard": True
+        },
+        "nodes": {
+            "font": {
+                "size": 14
+            }
+        }
+    }))
+
+    # -------------------------
+    # Render
+    # -------------------------
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as f:
+        net.save_graph(f.name)
+        html_data = open(f.name, "r", encoding="utf-8").read()
+
+    st.components.v1.html(html_data, height=650, scrolling=True)
 
 def _render_results_dashboard(result: dict[str, Any]) -> None:
 	clauses = result.get("clauses", [])
@@ -1734,28 +1898,26 @@ def _render_results_dashboard(result: dict[str, Any]) -> None:
 	node_count = len(clauses)
 	edge_count = len(edges)
 	contradiction_count = len(contradictions)
-	max_edges = node_count * (node_count - 1) / 2 if node_count > 1 else 0.0
-	density = (edge_count / max_edges) if max_edges > 0 else 0.0
-	density_pct = max(0.0, min(100.0, density * 100.0))
 
-	st.markdown(
-		(
-			'<div class="card" style="padding:0.9rem;">'
-			'<div class="graph-pill-row">'
-			f'{_metric_pill("Total Nodes", node_count, "info")}'
-			f'{_metric_pill("Total Edges", edge_count, "info")}'
-			f'{_metric_pill("Contradiction Pairs Found", contradiction_count, "med")}'
-			"</div>"
-			'<div class="graph-density-wrap">'
-			'<div class="graph-density-track">'
-			f'<div class="graph-density-fill" style="width:{density_pct:.1f}%;"></div>'
-			"</div>"
-			f'<div class="graph-density-label">Graph density: {density_pct:.1f}%</div>'
-			"</div>"
-			"</div>"
-		),
-		unsafe_allow_html=True,
-	)
+	kg_tab, = st.tabs(["Knowledge Graph"])
+	with kg_tab:
+		st.markdown(
+			(
+				'<div class="card" style="padding:0.9rem; margin-bottom:0.75rem;">'
+				'<div class="graph-pill-row">'
+				f'{_metric_pill("Total Nodes", node_count, "info")}'
+				f'{_metric_pill("Total Edges", edge_count, "info")}'
+				f'{_metric_pill("Contradiction Pairs Found", contradiction_count, "med")}'
+				"</div>"
+				"</div>"
+			),
+			unsafe_allow_html=True,
+		)
+
+		# if st.button("View Knowledge Graph", key="view_kg", use_container_width=False):
+		# 	_render_knowledge_graph(clauses=clauses, graph_edges=edges)
+		if st.button("View Knowledge Graph", key="view_kg", use_container_width=False):
+			_render_knowledge_graph(clauses=clauses, graph_edges=edges, risks=classified_risks, contradictions=contradictions)
 
 	_section_title("Contradictions")
 	if contradictions:
@@ -1865,7 +2027,7 @@ def _render_sidebar(status: dict[str, bool]) -> str:
 				f'<span class="status-dot {inlegal_dot}"></span></div>'
 				'<div class="status-row"><span>Qdrant connected</span>'
 				f'<span class="status-dot {qdrant_dot}"></span></div>'
-				'<div class="status-row"><span>Phi-3-mini status</span>'
+				'<div class="status-row"><span>llama3:latest (Ollama)</span>'
 				f'<span class="status-dot {phi3_dot}"></span></div>'
 			),
 			unsafe_allow_html=True,
