@@ -414,22 +414,20 @@ def upsert_docs(
 def main() -> None:
     _load_backend_env()
 
+    url = os.getenv("QDRANT_URL", "local")
     api_key = os.getenv("QDRANT_API_KEY")
-    if not api_key:
-        raise SystemExit("QDRANT_API_KEY not found. Add it to backend/.env")
-
-    url = os.getenv(
-        "QDRANT_URL",
-        "https://5d12e4e3-03ea-4848-b40c-a1ed6490a4c5.eu-central-1-0.aws.cloud.qdrant.io",
-    )
     collection_name = os.getenv("QDRANT_COLLECTION", "contractlens_legal")
     model_name = os.getenv("EMBEDDING_MODEL", DEFAULT_EMBEDDING_MODEL)
     version = os.getenv("LEGAL_VERSION", "latest")
 
     root = _repo_root()
-    data_dir = root / "data" / "json"
+    data_dir = root / "data" / "default"
+    if not data_dir.exists():
+        data_dir = root / "data" / "json"
 
     contract_path = data_dir / "indian_contract_act_1872_cleaned.json"
+    if not contract_path.exists():
+        contract_path = data_dir / "indian_contract_act_1872.json"
     constitution_path = data_dir / "constitution_of_india.json"
     ipc_path = data_dir / "ipc.json"
 
@@ -437,12 +435,21 @@ def main() -> None:
         if not p.exists():
             raise SystemExit(f"Missing input file: {p}")
 
-    print(f"Qdrant URL: {url}")
+    print(f"Qdrant Target: {url}")
     print(f"Collection: {collection_name}")
     print(f"Embedding model: {model_name}")
     print(f"Version: {version}")
 
-    client = QdrantClient(url=url, api_key=api_key)
+    if url.lower() in ("local", "embedded", "") or not (url.startswith("http://") or url.startswith("https://")):
+        db_path = root / "data" / "qdrant_storage"
+        db_path.mkdir(parents=True, exist_ok=True)
+        print(f"Using local embedded Qdrant database at: {db_path}")
+        client = QdrantClient(path=str(db_path))
+    else:
+        if not api_key:
+            raise SystemExit("QDRANT_API_KEY not found. Add it to backend/.env")
+        client = QdrantClient(url=url, api_key=api_key)
+
     embedder = EmbeddingModel(model_name=model_name)
 
     rebuild_collection(client, collection_name=collection_name, vector_size=embedder.dimension)

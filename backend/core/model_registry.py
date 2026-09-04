@@ -30,6 +30,12 @@ def get_qdrant_client() -> "QdrantClient":
     from qdrant_client import QdrantClient
 
     settings = get_settings()
-    if not settings.qdrant_api_key:
-        raise RuntimeError("QDRANT_API_KEY is not configured in backend/.env")
-    return QdrantClient(url=settings.qdrant_url, api_key=settings.qdrant_api_key, timeout=8)
+    url = (settings.qdrant_url or "").strip()
+    if url.lower() in ("local", "embedded", "") or not (url.startswith("http://") or url.startswith("https://")):
+        db_path = settings.data_root / "qdrant_storage"
+        db_path.mkdir(parents=True, exist_ok=True)
+        return QdrantClient(path=str(db_path))
+
+    if settings.qdrant_api_key:
+        return QdrantClient(url=url, api_key=settings.qdrant_api_key, timeout=8)
+    return QdrantClient(url=url, timeout=8)
