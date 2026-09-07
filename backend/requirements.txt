@@ -4,6 +4,7 @@ pandas
 numpy
 networkx
 scikit-learn
+tqdm
 sentence-transformers
 requests
 python-multipart
@@ -14,3 +15,5 @@ Pillow
 streamlit
 python-dotenv
 pyvis
+seaborn
+matplotlib

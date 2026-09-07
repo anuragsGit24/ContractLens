@@ -14,7 +14,7 @@ def check_against_law(
     clause_vectors: list[list[float]] | None = None,
     top_k_raw: int = 10,
     top_k_final: int = 3,
-    contradiction_threshold: float = 0.68,
+    contradiction_threshold: float = 0.50,
 ) -> list[ClauseLawCheck]:
     if not clauses:
         return []

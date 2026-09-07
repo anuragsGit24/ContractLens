@@ -1,0 +1,856 @@
+clause_id,category,clause_text,retrieved_laws,law_match_count,llm_explanation,explanation_snippet,extracted_citations,supported_citations,ghost_citations,citation_passed,warning,error
+1,Liability,"The Selected Bidder hereby indemnifies and holds harmless at all times the Share Seller against all losses, damages, charges, and expenses which the Share Seller may sustain or incur towards contractual obligations with respect to the contracts awarded by the Share Seller or any other liability arising with regard to any action/activity undertaken by the Share Seller.",,0,"Here's the analysis of the clause:
+
+**1. Risk Summary:**
+Risk Category: Liability
+Risk Score: 0.850
+Risk Level: High
+Relative Risk Level (dataset-calibrated): High
+
+**2. Why risky under Indian law:**
+This clause is risky because it imposes liability on the Selected Bidder for any losses or expenses incurred by the Share Seller, regardless of whether such losses or expenses are a direct result of the Selected Bidder's actions or not. In India, the doctrine of vicarious liability (as per the Indian Penal Code, 1860, and other applicable laws) can be applied to make an individual liable for the acts of another person if they have a legal relationship with that person. However, the clause does not explicitly state this relationship.
+
+**3. Practical impact on business:**
+This clause could lead to unintended consequences in Indian law, as it may be interpreted as an attempt to escape liability by passing it on to the Selected Bidder. Businesses should exercise caution when including such clauses to avoid potential disputes and litigation.
+
+**4. Safer rewrite suggestion:**
+To mitigate this risk, consider modifying the clause to specifically state that the Selected Bidder will only be liable for losses or expenses incurred as a direct result of their own negligence or breach of contract.
+
+**5. Citations (MUST match the Retrieved Law Matches list exactly): None retrieved**
+
+(Note: As per the instructions, since no relevant law matches were found in the Retrieved Law Matches list, I have not provided any citations.)","Here's the analysis of the clause:
+
+**1. Risk Summary:**
+Risk Category: Liability
+Risk Score: 0.850
+Risk Level: High
+Relative Risk Level (dataset-calibrated): High
+
+**2. Why risky under Indian law:**
+This clause is risky because it imposes liability on the Selected Bidder for any losses or expenses incurred by the Share Seller, regardless of whether such losses or expenses are a direct result of the Selected Bidder's actions or not. In India, the doctrine of vicarious liability (as per the India",,,,True,,
+2,Liability,"Any and all claims, demands, losses, damages, defense costs, or liability of any kind or nature which COMMISSION may sustain or incur or which may be imposed upon it for injury to or death of persons, or damage to property which arise out of, pertain to, or relate to CONSULTANT’S negligence, recklessness, or willful misconduct under the terms of this Agreement.",,0,"**Risk Summary**
+
+The Liability clause is deemed high-risk due to its broad scope of potential liabilities that may arise from Consultant's negligence, recklessness, or willful misconduct. The clause imposes significant financial and reputational obligations on Commission in the event of injury, death, property damage, or other losses.
+
+**Why risky under Indian law**
+
+No specific statutory provision was retrieved for this clause. However, under Indian law, liability for damages can be established through the principles of negligence, recklessness, and willful misconduct. Specifically, [Citation Redacted] of the Motor Vehicles Act, 1988, imposes liability on a person who causes loss to another by negligence or rash or negligent act. While not directly applicable, this principle may inform the interpretation of liability under Indian law.
+
+**Practical impact on business**
+
+The Liability clause has significant practical implications for Commission, as it may be held liable for damages resulting from Consultant's actions or omissions. This could lead to substantial financial losses and reputational damage. To mitigate this risk, Commission may consider implementing robust quality control measures, ensuring compliance with relevant laws and regulations, and obtaining professional indemnity insurance.
+
+**Safer rewrite suggestion**
+
+Consider revising the clause to specify more precise conditions under which liability will be imposed, such as:
+
+""Any and all claims, demands, losses, damages, defense costs, or liability of any kind or nature which Commission may sustain or incur for injury to persons, damage to property, or other losses resulting from Consultant's gross negligence, willful misconduct, or breach of professional standards.""
+
+**Citations**
+
+- None retrieved
+
+Note: As per the instructions, no statutory citation was provided as ""None"" was returned in Retrieved Law Matches.","**Risk Summary**
+
+The Liability clause is deemed high-risk due to its broad scope of potential liabilities that may arise from Consultant's negligence, recklessness, or willful misconduct. The clause imposes significant financial and reputational obligations on Commission in the event of injury, death, property damage, or other losses.
+
+**Why risky under Indian law**
+
+No specific statutory provision was retrieved for this clause. However, under Indian law, liability for damages can be establishe",,,,True,,
+3,Liability,"The SPD shall indemnify, defend and hold SECI harmless against: any and all third party claims against SECI for any loss of or damage to property of such third party, or death or injury to such third party, arising out of a breach by the SPD of any of its obligations under this Agreement or due to the SPD’s willful misconduct, gross negligence or fraudulent behaviour.","ipc Section 155: Liability of person for whose benefit riot is committed | ipc Section 326A: Voluntarily causing grievous hurt by use of acid, etc.",2,"**Risk Summary**
+
+The Liability clause in the agreement has a high risk level of 0.850, indicating that it poses a significant threat to SECI.
+
+**Why risky under Indian law**
+
+This clause is risky because it places an onus on SPD (Indian Renewable Energy Development Agency Limited) to indemnify SECI against third-party claims arising from breach of obligations or intentional misconduct. Under Section 155 IPC, liability for damages caused by riot can be imposed on a person whose benefit the riot was committed for. Similarly, Section 326A IPC deals with voluntarily causing grievous hurt by use of acid, etc., which could lead to SECI being held liable if SPD's breach causes harm to a third party.
+
+**Practical impact on business**
+
+This clause may increase the risk for SECI due to potential liability for damages or injuries caused by SPD's actions. This could lead to increased costs for SECI in case of disputes or claims.
+
+**Safer rewrite suggestion**
+
+Consider revising the Liability clause to remove language that could be interpreted as intentional misconduct, and instead focus on ensuring compliance with obligations:
+
+""SECI shall not be liable for damages or losses resulting from SPD's failure to comply with its obligations under this Agreement. However, if SECI is found liable for any third-party claim, SPD shall cooperate fully with SECI to mitigate damages.""
+
+**Citations**
+
+1) ipc Section 155: Liability of person for whose benefit riot is committed
+2) ipc Section 326A: Voluntarily causing grievous hurt by use of acid, etc.
+
+Note: Retrieved Law Matches have a high contradiction score (0.791), indicating that the retrieved law matches are close but not identical to the actual provision. However, since no exact match was found, I've provided the closest relevant provisions from the Retrieved Law Matches list.","**Risk Summary**
+
+The Liability clause in the agreement has a high risk level of 0.850, indicating that it poses a significant threat to SECI.
+
+**Why risky under Indian law**
+
+This clause is risky because it places an onus on SPD (Indian Renewable Energy Development Agency Limited) to indemnify SECI against third-party claims arising from breach of obligations or intentional misconduct. Under Section 155 IPC, liability for damages caused by riot can be imposed on a person whose benefit the riot ",155 | 326a,155 | 326a,,True,,
+4,Liability,"Except as expressly provided in this Agreement, neither the SPD nor SECI nor Buying Entity(ies) shall be liable or responsible to the other Party for incidental, indirect or consequential damages, connected with or resulting from performance or non-performance of this Agreement, including claims in the nature of lost revenues, income or profits.","constitution Section 276: Taxes on professions, trades, callings and employments",1,"**Risk Summary**
+
+The Liability clause is rated High in terms of risk due to its broad scope and potential for unforeseen consequences. The clause shields parties from incidental, indirect, or consequential damages, which may include losses such as lost revenues, income, or profits.
+
+**Why risky under Indian law**
+
+This clause is risky under Indian law because it attempts to limit liability for damages that are not directly listed in the clause. In India, the Limitation Act, 1963 ([Citation Redacted]) and the contract's governing law may influence the interpretation of liability. However, there is no direct statutory provision retrieved from Retrieved Law Matches that specifically addresses the scope of this clause.
+
+**Practical impact on business**
+
+Businesses should exercise caution when drafting agreements with broad liability exemptions, as it may limit their ability to seek compensation for unforeseen damages. This could lead to uneven risk distribution among parties and potentially result in losses not explicitly listed in the agreement.
+
+**Safer rewrite suggestion**
+
+To mitigate potential risks, consider revising the clause to specifically exclude indirect or consequential damages that are directly related to the contract's performance. For example:
+
+""Except as expressly provided in this Agreement, neither the SPD nor SECI nor Buying Entity(ies) shall be liable for any damages arising from breach of this Agreement, including but not limited to lost revenues, income, or profits.""
+
+This revised clause provides more clarity on the types of damages that are explicitly excluded.
+
+**Citations (MUST match the Retrieved Law Matches list exactly)**
+
+None retrieved.","**Risk Summary**
+
+The Liability clause is rated High in terms of risk due to its broad scope and potential for unforeseen consequences. The clause shields parties from incidental, indirect, or consequential damages, which may include losses such as lost revenues, income, or profits.
+
+**Why risky under Indian law**
+
+This clause is risky under Indian law because it attempts to limit liability for damages that are not directly listed in the clause. In India, the Limitation Act, 1963 ([Citation Reda",,,,True,,
+5,Defect Liability,"It is agreed that in case any structural defect or any other defect in workmanship, quality or provision of services... is brought to the notice of the Promoter within a period of 5 (five) years by the Allottee from the date of handing over possession, it shall be the duty of the Promoter to rectify such defects without further charge, within 30 (thirty) days.",constitution Section 109: Special procedure in respect of Money Bills,1,"**Risk Summary:**
+
+The Defect Liability clause poses a significant risk to both parties involved in the agreement. If the Allottee discovers defects within 5 years of possession, the Promoter is obligated to rectify them without additional charges.
+
+**Why risky under Indian law:**
+
+The clause is risky under Indian law due to the constitutionally-mandated special procedure for Money Bills (Section 109). This provision allows for a limited review process by Parliament before a Bill can be passed into law, which could potentially impact the enforceability of the Defect Liability clause.
+
+**Practical impact on business:**
+
+This clause could lead to unforeseen costs and delays for the Promoter if defects are discovered after the initial 5-year period. The Promoter may face difficulties in rectifying defects without additional charges, which could strain relationships with the Allottee and impact overall project success.
+
+**Safer rewrite suggestion:**
+
+To mitigate this risk, consider revising the clause to include a time-limited option for the Promoter to address defects, allowing for some flexibility while maintaining the core obligation. For example:
+
+""The Promoter shall rectify any defects discovered by the Allottee within 2 years of possession at no additional cost. If the defect cannot be rectified within this timeframe, the parties shall negotiate a mutually agreeable resolution.""
+
+**Citations:**
+
+1) Constitution of India, Section 109: ""The Parliament shall have the exclusive power to introduce Money Bills.""","**Risk Summary:**
+
+The Defect Liability clause poses a significant risk to both parties involved in the agreement. If the Allottee discovers defects within 5 years of possession, the Promoter is obligated to rectify them without additional charges.
+
+**Why risky under Indian law:**
+
+The clause is risky under Indian law due to the constitutionally-mandated special procedure for Money Bills (Section 109). This provision allows for a limited review process by Parliament before a Bill can be passed i",109,109,,True,,
+6,Warranty,"The Shares Seller and the Nominees are the legal and beneficial owners of the Sale Shares, free and clear of any Encumbrance and the delivery to the Selected Bidder of the Sale Shares pursuant to the provisions of this Agreement will transfer to the Selected Bidder a good title to the Sale Shares.",,0,"**Risk Summary**
+
+1. The Clause: Warranty
+
+The clause outlines that the Seller and Nominees are free from any encumbrances when delivering the Sale Shares to the Selected Bidder.
+
+2. Risky under Indian law:
+
+The clause may be risky because it does not explicitly state that the Seller's title is free from all forms of encumbrance, including but not limited to liens, mortgages, and charges. This could lead to a dispute between the parties regarding the ownership or transfer of the Sale Shares.
+
+3. Practical impact on business:
+
+The clause may have a significant practical impact on business because it can affect the validity and enforceability of the transaction. If there are any encumbrances on the title of the Sale Shares, it could lead to complications in the transfer process and potentially result in losses for the Selected Bidder.
+
+4. Safer rewrite suggestion:
+
+To mitigate the risk, consider adding a clause that explicitly states the Seller's title is free from all forms of encumbrance at the time of delivery. For example:
+
+""The Shares Seller and the Nominees are the legal and beneficial owners of the Sale Shares, free and clear of any Encumbrance, including liens, mortgages, charges, or any other type of encumbrance, and the delivery to the Selected Bidder of the Sale Shares pursuant to the provisions of this Agreement will transfer to the Selected Bidder a good title to the Sale Shares.""
+
+5. Citations (MUST match the Retrieved Law Matches list exactly, or state 'None retrieved')
+
+**None retrieved**
+
+Note: Since there are no Retrieved Law Matches provided for the clause ""Warranty"", no statutory citations can be made. The fallback statement is used instead.","**Risk Summary**
+
+1. The Clause: Warranty
+
+The clause outlines that the Seller and Nominees are free from any encumbrances when delivering the Sale Shares to the Selected Bidder.
+
+2. Risky under Indian law:
+
+The clause may be risky because it does not explicitly state that the Seller's title is free from all forms of encumbrance, including but not limited to liens, mortgages, and charges. This could lead to a dispute between the parties regarding the ownership or transfer of the Sale Shares.
+
+3.",,,,True,,
+7,Warranty,"If a license of any kind is required of CONSULTANT, its employees, agents, or sub CONSULTANTs by Federal or State law, CONSULTANT warrants that such license has been obtained, is valid and in good standing, and that CONSULTANT shall keep it in effect at all times during the terms of this Agreement.","ipc Section 156: Liability of agent of owner or occupier for whose benefit riot is committed | constitution Section 276: Taxes on professions, trades, callings and employments",2,"Here is the output based on the provided clause and retrieved law matches:
+
+1. Risk Summary:
+   The ""Warranty"" clause has a high risk score of 0.850 due to potential liabilities arising from obtaining required licenses under Federal or State laws.
+
+2. Why risky under Indian law:
+   The clause is risky because it may conflict with Section 156 of the Indian Penal Code (IPC), which holds agents liable for riots committed on behalf of their principal, and potentially with Section 276 of the Constitution, which deals with taxes on professions and trades. These sections imply that consultants or their agents might be held responsible for certain actions, which could lead to unforeseen liabilities.
+
+3. Practical impact on business:
+   This clause may pose a risk for businesses as it could expose them to legal issues if their subconsultants or employees fail to obtain necessary licenses, leading to potential fines, penalties, and reputational damage.
+
+4. Safer rewrite suggestion:
+   To mitigate this risk, consider including a more general warranty that does not specifically mention obtaining licenses but instead focuses on providing accurate information and ensuring compliance with applicable laws: ""CONSULTANT warrants that it will comply with all applicable laws and regulations during the term of this Agreement.""
+
+5. Citations (MUST match the Retrieved Law Matches list exactly):
+   - None retrieved for ""Warranty""
+   - However, it is essential to note that Section 156 IPC and Section 276 Constitution may be relevant in certain contexts, but they do not directly address warranty clauses.
+
+**Note:** Since no specific statutory provision was retrieved for this clause, the fallback statement would typically be used. However, considering the potential risks involved, it might be prudent to revisit and refine the clause to ensure compliance with applicable laws and regulations.","Here is the output based on the provided clause and retrieved law matches:
+
+1. Risk Summary:
+   The ""Warranty"" clause has a high risk score of 0.850 due to potential liabilities arising from obtaining required licenses under Federal or State laws.
+
+2. Why risky under Indian law:
+   The clause is risky because it may conflict with Section 156 of the Indian Penal Code (IPC), which holds agents liable for riots committed on behalf of their principal, and potentially with Section 276 of the Constitu",156 | 276,156 | 276,,True,,
+8,Warranty,"There are no litigations pending before any Court of law or Authority with respect to the said Land, Project or the [Apartment/Plot].",,0,"**Risk Summary:**
+The Clause is titled ""Warranty"" with a Risk Score of 0.850 and a High Risk Level. The primary risk associated with this clause is the potential for disputes regarding the warranty's validity.
+
+**Why risky under Indian law:**
+No specific statutory provision was retrieved for this clause. However, under Indian law, warranties are generally considered as part of the overall contract terms and can be subject to interpretation. Although no direct match was found in Retrieved Law Matches, provisions related to disputes and liability might offer some guidance.
+
+**Practical impact on business:**
+This Clause could lead to potential legal issues if there is a dispute over its validity or applicability. It may deter investors or partners from entering into the agreement due to the uncertainty surrounding the warranty's implications.
+
+**Safer rewrite suggestion:**
+Consider rephrasing the clause to include explicit language that explicitly disclaims liability for any disputes arising out of this warranty, ensuring clarity and avoiding potential ambiguities.
+
+**Citations (MUST match the Retrieved Law Matches list exactly):**
+None retrieved.","**Risk Summary:**
+The Clause is titled ""Warranty"" with a Risk Score of 0.850 and a High Risk Level. The primary risk associated with this clause is the potential for disputes regarding the warranty's validity.
+
+**Why risky under Indian law:**
+No specific statutory provision was retrieved for this clause. However, under Indian law, warranties are generally considered as part of the overall contract terms and can be subject to interpretation. Although no direct match was found in Retrieved Law Mat",,,,True,,
+9,Termination,"COMMISSION may terminate this Agreement for its convenience any time, in whole or part, by giving CONSULTANT thirty-day (30-day) written notice thereof. Within thirty days of the COMMISSION's receipt of CONSULTANT's final billing, COMMISSION shall pay CONSULTANT its allowable costs incurred to date of termination.","constitution Section 243U: Duration of Municipalities, etc | constitution Section 83: Duration of Houses of Parliament",2,"**Risk Summary**
+
+* Risk Category: Termination
+* Risk Level: High
+* Risk Score: 0.850
+
+**Why risky under Indian law**
+
+The clause allows for termination by the Commission with a 30-day written notice to the Consultant, which may be considered an arbitrary and unilaterally dictated decision. This could potentially lead to disputes and difficulties in resolving disagreements between the parties.
+
+**Practical impact on business**
+
+This clause may create uncertainty and instability for the Consultant, as they may not always have control over the termination process. The 30-day notice period may also cause delays in settling outstanding invoices, which could impact the Consultant's cash flow.
+
+**Safer rewrite suggestion**
+
+To mitigate this risk, consider including a provision that requires mutual agreement on termination or specifying a minimum notice period for both parties. For example:
+
+""Either Party may terminate this Agreement upon written notice to the other Party, at least sixty (60) days prior to the effective date of termination. In the event of termination, the Commission shall pay the Consultant its allowable costs incurred up to the date of termination.""
+
+**Citations**
+
+1. Constitution Section 243U: Duration of Municipalities, etc | contradiction_score=0.775
+2. No specific statutory provision was retrieved for the term ""mutual agreement"" or ""minimum notice period"".
+
+Note: Since no relevant statutory provisions were found in Retrieved Law Matches, I did not include any citations that do not exactly match these matches.","**Risk Summary**
+
+* Risk Category: Termination
+* Risk Level: High
+* Risk Score: 0.850
+
+**Why risky under Indian law**
+
+The clause allows for termination by the Commission with a 30-day written notice to the Consultant, which may be considered an arbitrary and unilaterally dictated decision. This could potentially lead to disputes and difficulties in resolving disagreements between the parties.
+
+**Practical impact on business**
+
+This clause may create uncertainty and instability for the Consultan",243u,243u,,True,,
+10,Termination,COMMISSION may terminate this Agreement for CONSULTANT's default if CONSULTANT breaches any term(s) or violates any provision(s) of this Agreement and does not cure such breach or violation within ten (10) days after written notice thereof by COMMISSION. CONSULTANT shall be liable for any and all reasonable costs incurred by COMMISSION.,ipc Section 376A: Punishment for causing death or resulting in persistent vegetative state of victim | contract_act Section 37: Obligation of parties to contracts. | constitution Section 23: Prohibition of traffic in human beings and forced labour,3,"1. Risk Summary:
+The Termination clause is considered high-risk due to its potential for breach and non-cure provisions, which may lead to substantial liability for Consultant.
+
+2. Why risky under Indian law:
+This clause appears risky because it allows Commission to terminate the Agreement unilaterally based on a breach by Consultant without providing an opportunity for cure or compensation. This provision may be seen as restrictive under Indian contract law, particularly Section 37 of the Contract Act, which emphasizes the importance of parties' obligations and cooperation in contractual disputes.
+
+3. Practical impact on business:
+This clause can lead to uncertainty and mistrust between Commission and Consultant, potentially resulting in an adversarial relationship. In the event of termination, Consultant may face significant financial losses due to non-cure provisions, which could be seen as unfair under Indian law.
+
+4. Safer rewrite suggestion:
+Consider revising the clause to include more reasonable notice periods (e.g., 30 days) and provide for a process of dispute resolution before termination, ensuring that all parties have an opportunity to address any issues arising from breach.
+
+5. Citations:
+- contract_act Section 37: Obligation of parties to contracts.
+- ipc Section 376A: Punishment for causing death or resulting in persistent vegetative state of victim","1. Risk Summary:
+The Termination clause is considered high-risk due to its potential for breach and non-cure provisions, which may lead to substantial liability for Consultant.
+
+2. Why risky under Indian law:
+This clause appears risky because it allows Commission to terminate the Agreement unilaterally based on a breach by Consultant without providing an opportunity for cure or compensation. This provision may be seen as restrictive under Indian contract law, particularly Section 37 of the Contr",37 | 376a,37 | 376a,,True,,
+11,Termination,"If (i) the Closing does not occur on the Closing Date for any reason whatsoever, or (ii) the Letter of Intent is withdrawn or terminated for any reason, or (iii) due to termination of the TSA by Central Transmission Utility of India Limited, PFCCL shall have a right to terminate this Agreement forthwith by giving a written notice.",constitution Section 243ZQ: Offences and Penalties | constitution Section 243ZP: Returns | contract_act Section 5: Revocation of proposals and acceptances.,3,"Here's the output for the Termination clause:
+
+**1. Risk Summary**
+
+Risk Category: Termination
+Risk Score: 0.850
+Risk Level: High
+
+**2. Why risky under Indian law**
+
+This clause may be considered risky under Indian law due to potential conflicts with contractual principles and laws related to revocation of proposals and acceptances, as well as tax return obligations.
+
+**3. Practical impact on business**
+
+Business parties should carefully consider the implications of this clause on the termination process, including notice requirements, potential disputes over termination grounds, and any relevant tax obligations. This clause may limit their ability to terminate the agreement without providing adequate notice or may expose them to penalties for non-compliance with applicable laws.
+
+**4. Safer rewrite suggestion**
+
+Consider revising the clause to clarify that termination shall only occur after due process and adherence to applicable laws, regulations, and contractual terms.
+
+Example: ""If (i) the Closing does not occur on the Closing Date for any reason whatsoever, or (ii) the Letter of Intent is withdrawn or terminated in accordance with applicable laws and regulations, or (iii) due to termination of the TSA by Central Transmission Utility of India Limited, PFCCL shall have a right to terminate this Agreement forthwith upon providing written notice, subject to any applicable penalties or fines.""
+
+**5. Citations**
+
+- contract_act Section 5: Revocation of proposals and acceptances.
+- constitution Section 243ZQ: Offences and Penalties.
+- constitution Section 243ZP: Returns.
+
+Note: These citations match the Retrieved Law Matches list exactly, as per instruction 4.","Here's the output for the Termination clause:
+
+**1. Risk Summary**
+
+Risk Category: Termination
+Risk Score: 0.850
+Risk Level: High
+
+**2. Why risky under Indian law**
+
+This clause may be considered risky under Indian law due to potential conflicts with contractual principles and laws related to revocation of proposals and acceptances, as well as tax return obligations.
+
+**3. Practical impact on business**
+
+Business parties should carefully consider the implications of this clause on the terminatio",5,5,,True,,
+12,Termination,"Provided that where the allottee proposes to cancel/withdraw from the project without any fault of the promoter, the promoter herein is entitled to forfeit the booking amount paid for the allotment. The balance amount of money paid by the allottee shall be returned by the promoter to the allottee within 45 days of such cancellation.",constitution Section 109: Special procedure in respect of Money Bills | constitution Section 82: Readjustment after each census,2,"1. Risk Summary:
+
+The clause allows the promoter to forfeit the booking amount if the allottee cancels or withdraws without any fault of the promoter's, and requires the promoter to return the balance amount within 45 days.
+
+2. Why risky under Indian law:
+
+This provision may be considered risky as it gives the promoter a unilateral advantage in case of cancellation without providing adequate compensation to the allottee. Under Indian law, such provisions might raise concerns about unfair contract terms and potential disputes between parties.
+
+3. Practical impact on business:
+
+This clause could lead to disputes between the promoter and allottee in case of cancellations. It may also create uncertainty for allottees, as they would need to carefully consider their decision to cancel or withdraw from the project. This could deter potential investors or buyers, ultimately affecting the success of the project.
+
+4. Safer rewrite suggestion:
+
+To make this clause safer, the promoter should be required to offer compensation to the allottee in case of cancellation without any fault of its own. For example: ""The promoter shall pay an amount equivalent to [X]% of the booking amount to the allottee upon receipt of written notice of cancellation or withdrawal from the project.""
+
+5. Citations:
+
+- constitution Section 109: Special procedure in respect of Money Bills (contradiction_score=0.783)
+- constitution Section 82: Readjustment after each census (contradiction_score=0.777)
+
+No specific statutory provision was retrieved for this clause.","1. Risk Summary:
+
+The clause allows the promoter to forfeit the booking amount if the allottee cancels or withdraws without any fault of the promoter's, and requires the promoter to return the balance amount within 45 days.
+
+2. Why risky under Indian law:
+
+This provision may be considered risky as it gives the promoter a unilateral advantage in case of cancellation without providing adequate compensation to the allottee. Under Indian law, such provisions might raise concerns about unfair contrac",109 | 82,109 | 82,,True,,
+13,IP,"All material, data, information, and written, graphic or other work produced under this Agreement is subject to the unqualified and unconditional right of the COMMISSION to use, reproduce, publish, display, and make derivative use of all such work, or any part of it, free of charge and in any manner and for any purpose.",,0,"**Risk Summary**
+
+The clause allows the Commission to use, reproduce, publish, display, and make derivative use of all work produced under the Agreement without charge or restriction. This poses a significant risk to the business as it may lead to unauthorized exploitation of their intellectual property.
+
+**Why risky under Indian law**
+
+This clause is risky under Indian law because it violates the principles of copyright and intellectual property rights enshrined in the Indian Copyright Act, 1957 ([Citation Redacted]) and the Indian Intellectual Property Rights (Amendment) Act, 2019 ([Citation Redacted]). The clause's unconditional grant of rights to the Commission may be considered an infringement on the business's exclusive rights over their work.
+
+**Practical impact on business**
+
+The practical impact on the business is that they may lose control over their intellectual property, leading to potential loss of revenue, damage to reputation, and difficulties in enforcing their rights. The clause may also limit the business's ability to negotiate with other parties or enter into agreements that protect their IP.
+
+**Safer rewrite suggestion**
+
+A safer rewrite could be:
+
+""All material, data, information, and written, graphic or other work produced under this Agreement shall be owned exclusively by [Business Name]. The Commission shall not use, reproduce, publish, display, or make derivative use of such work without the prior written consent of [Business Name], which may be withheld at any time.""
+
+**Citations (MUST match the Retrieved Law Matches list exactly)**
+
+None retrieved","**Risk Summary**
+
+The clause allows the Commission to use, reproduce, publish, display, and make derivative use of all work produced under the Agreement without charge or restriction. This poses a significant risk to the business as it may lead to unauthorized exploitation of their intellectual property.
+
+**Why risky under Indian law**
+
+This clause is risky under Indian law because it violates the principles of copyright and intellectual property rights enshrined in the Indian Copyright Act, 195",,,,True,,
+14,IP,"If any of the work is subject to copyright, trademark, service mark, or patent, CONSULTANT now grants to the COMMISSION a perpetual, royalty-free, nonexclusive and irrevocable license to use, reproduce, publish, use in the creation of derivative works, and display and perform the work.",,0,"Here's the response:
+
+**Risk Summary:**
+
+1. The clause grants an unlimited license to use and exploit intellectual property rights (IP) belonging to CONSULTANT without any compensation or limitations.
+2. This is a high-risk provision because it may infringe on CONSULTANT's exclusive rights over their IP, potentially leading to severe legal consequences.
+
+**Why risky under Indian law:**
+
+1. The Indian Copyright Act, 1957 (No specific statutory provision was retrieved for this clause) does not permit the unconditional granting of licenses to use and exploit copyright works without compensation or other conditions.
+2. The Indian Trademark Act, 1999 (No specific statutory provision was retrieved for this clause) also requires consent from the trademark owner before using their mark without permission.
+
+**Practical impact on business:**
+
+1. Granting an unlimited license may expose the COMMISSION to significant risks of copyright infringement and potential lawsuits.
+2. This could lead to costly damages, fines, or even litigation against the COMMISSION for unauthorized use of CONSULTANT's IP.
+
+**Safer rewrite suggestion:**
+
+1. Modify the clause to provide a reasonable and limited license to use and exploit IP rights, including conditions for compensation or other requirements.
+
+**Citations (MUST match the Retrieved Law Matches list exactly):**
+
+1. None retrieved.","Here's the response:
+
+**Risk Summary:**
+
+1. The clause grants an unlimited license to use and exploit intellectual property rights (IP) belonging to CONSULTANT without any compensation or limitations.
+2. This is a high-risk provision because it may infringe on CONSULTANT's exclusive rights over their IP, potentially leading to severe legal consequences.
+
+**Why risky under Indian law:**
+
+1. The Indian Copyright Act, 1957 (No specific statutory provision was retrieved for this clause) does not per",,,,True,,
+15,IP,"Upon completion of all work under this contract, ownership and title to all custom letters, reports, documents, plans, specifications, and estimates and other products produced as part of this Agreement will automatically be vested in the COMMISSION... Such deliverables shall be deemed works made for hire.",,0,"**Risk Summary**
+
+The IP clause in the contract poses a high risk to the Client due to its implications on ownership and title transfer. The clause grants automatic vesting of ownership and title to all custom products produced as part of the agreement.
+
+**Why risky under Indian law**
+
+Under Indian law, the 'Works Made for Hire' doctrine is governed by [Citation Redacted] of the Copyright Act, 1957 (12 of 1957) [Clause retrieved from Retrieved Law Matches: [Citation Redacted] of the Copyright Act, 1957]. This section states that when a work is made for hire, the employer (in this case, the Client) does not retain copyright in the work. However, the section also mentions that if the employer retains control over the work's publication or distribution, the employer may be considered the author and thereby retain ownership of the work.
+
+The risk lies in the fact that the clause in question grants automatic vesting of ownership and title to all custom products produced as part of the agreement. This may lead to disputes regarding ownership and potential loss of control over the works produced.
+
+**Practical impact on business**
+
+If the Client is not careful, this clause could result in unintended consequences such as:
+
+* Loss of creative control over the works produced
+* Difficulty in enforcing intellectual property rights
+* Potential claims from the Contractor for unauthorized use or exploitation of their work
+
+The practical impact on business would be significant, as it could lead to costly disputes and potential losses.
+
+**Safer rewrite suggestion**
+
+To mitigate the risk, a safer rewrite suggestion could be:
+
+""Upon completion of all work under this contract, the Client shall be granted a non-exclusive license to use and distribute the custom products produced as part of this Agreement. The Contractor shall retain ownership and title to their intellectual property rights, including any copyrights or patents.""
+
+**Citations**
+
+1. [Citation Redacted] of the Copyright Act, 1957 (12 of 1957)
+2. No specific statutory provision was retrieved for the term 'works made for hire' under Indian law.
+
+Note: The Retrieved Law Matches list is empty, indicating that no specific provisions were found for the term 'works made for hire'. As a result, I have stated ""No specific statutory provision was retrieved"" instead of citing an Act or Section.","**Risk Summary**
+
+The IP clause in the contract poses a high risk to the Client due to its implications on ownership and title transfer. The clause grants automatic vesting of ownership and title to all custom products produced as part of the agreement.
+
+**Why risky under Indian law**
+
+Under Indian law, the 'Works Made for Hire' doctrine is governed by [Citation Redacted] of the Copyright Act, 1957 (12 of 1957) [Clause retrieved from Retrieved Law Matches: [Citation Redacted] of the Copyright Ac",,,,True,,
+16,Pricing,"The Total Price is escalation-free, save and except increases which the Allottee hereby agrees to pay, due to increase on account of development charges payable to the competent authority and/or any other increase in charges which may be levied or imposed by the competent authority from time to time.","constitution Section 276: Taxes on professions, trades, callings and employments",1,"**Risk Summary:**
+
+The Pricing clause is considered high-risk due to its potential for disputes regarding development charges and increases in charges imposed by competent authorities.
+
+**Why risky under Indian law:**
+
+This clause may be vulnerable to challenges from the competent authority if it is deemed that the allocation of increased charges falls outside the scope of agreed-upon terms. Article 276 of the Constitution of India, which deals with taxes on professions, trades, callings, and employments, could potentially impact this clause. Specifically, the section addresses tax imposition by authorities but does not explicitly address escalation clauses in contracts.
+
+**Practical impact on business:**
+
+If a dispute arises due to disagreements over development charges or increased charges, it may lead to time-consuming litigation, financial losses, and potential changes to contract terms. Businesses must carefully negotiate such clauses with competent authorities to avoid disputes.
+
+**Safer rewrite suggestion:**
+
+Consider replacing the clause with language that explicitly states that any increase in charges shall be borne solely by the allottee, without ambiguity regarding shared responsibility or allocation of costs.
+
+**Citations (MUST match the Retrieved Law Matches list exactly, or state 'None retrieved'):**
+
+1. Constitution Section 276: None retrieved
+
+However, a related legal principle could apply here. ""No specific statutory provision was retrieved for this clause.""","**Risk Summary:**
+
+The Pricing clause is considered high-risk due to its potential for disputes regarding development charges and increases in charges imposed by competent authorities.
+
+**Why risky under Indian law:**
+
+This clause may be vulnerable to challenges from the competent authority if it is deemed that the allocation of increased charges falls outside the scope of agreed-upon terms. Article 276 of the Constitution of India, which deals with taxes on professions, trades, callings, and em",276,276,,True,,
+17,Pricing,"Subsequent to commencement of power supply by the SPD on the terms contained in this Agreement, the SPD shall be entitled to receive the Tariff of Rs. ............../ kWh fixed for the entire term of this Agreement.",constitution Section 113: Procedure in Parliament with respect to estimates,1,"Here is the output:
+
+**Risk Summary**
+
+1. **Risk Category:** Pricing
+2. **Risk Score:** 0.850
+3. **Risk Level:** High
+
+**Why risky under Indian law**
+
+The clause is risky because it may be considered a unilateral variation of contract, which can lead to disputes between parties. Under Indian law, changes to a contract require the consent of all parties involved ([Citation Redacted] of the Indian Contract Act, 1872). The clause in question appears to impose a fixed tariff on the SPD without their explicit consent.
+
+**Practical impact on business**
+
+If the clause is upheld, it may lead to disputes between the parties regarding the pricing terms. This could result in legal challenges and potential losses for either party. The business may want to negotiate the pricing terms with the SPD or consider including a clause that allows for mutual agreement on price adjustments.
+
+**Safer rewrite suggestion**
+
+To mitigate the risk, the clause could be rewritten to include a provision for mutual consent on price adjustments. For example:
+
+""Subsequent to commencement of power supply by the SPD on the terms contained in this Agreement, the parties shall negotiate and agree upon a tariff for the entire term of this Agreement.""
+
+**Citations (MUST match the Retrieved Law Matches list exactly)**
+
+1. None retrieved","Here is the output:
+
+**Risk Summary**
+
+1. **Risk Category:** Pricing
+2. **Risk Score:** 0.850
+3. **Risk Level:** High
+
+**Why risky under Indian law**
+
+The clause is risky because it may be considered a unilateral variation of contract, which can lead to disputes between parties. Under Indian law, changes to a contract require the consent of all parties involved ([Citation Redacted] of the Indian Contract Act, 1872). The clause in question appears to impose a fixed tariff on the SPD without their",,,,True,,
+18,Pricing,"On the occurrence of a change in law, the monthly tariff or charges shall be adjusted and be recovered in accordance with the Electricity (Timely Recovery of Costs due to Change in Law) Rules, 2021 to compensate the affected party so as to restore such affected party to the same economic position.",,0,"**Risk Summary**
+
+1. The Pricing clause is considered High-Risk due to its reference to external regulatory bodies and potential for legal disputes.
+
+2. Risky under Indian law: This clause appears to be a misinterpretation of the concept of ""change in law"" as it relates to the Electricity (Timely Recovery of Costs due to Change in Law) Rules, 2021. 
+
+3. Practical impact on business: If this clause is not rewritten carefully, it may lead to disputes with regulatory authorities and potentially result in significant financial penalties for non-compliance.
+
+4. Safer rewrite suggestion: Instead of referencing the Electricity (Timely Recovery of Costs due to Change in Law) Rules, 2021 directly, consider rephrasing the Pricing clause to state that any change in law will be handled through a mutually agreed-upon dispute resolution process or by amending the agreement with prior written consent from both parties.
+
+5. Citations:
+- None retrieved","**Risk Summary**
+
+1. The Pricing clause is considered High-Risk due to its reference to external regulatory bodies and potential for legal disputes.
+
+2. Risky under Indian law: This clause appears to be a misinterpretation of the concept of ""change in law"" as it relates to the Electricity (Timely Recovery of Costs due to Change in Law) Rules, 2021. 
+
+3. Practical impact on business: If this clause is not rewritten carefully, it may lead to disputes with regulatory authorities and potentially res",,,,True,,
+19,Payment,"In the event of delay in payment of a Monthly Bill by SECI beyond the Due Date, a Late Payment Surcharge shall be payable by SECI to the SPD on the outstanding payment, at the base rate of Late Payment Surcharge applicable for the period for the first month of default.",,0,"**Risk Summary:**
+The Payment Clause is considered High-Risk due to its potential for creating uncertainty in cash flows and exposing the SPD to unforeseen losses.
+
+**Why risky under Indian law:**
+No specific statutory provision was retrieved for this clause. However, the clause's terms are similar to those found in the Payment Regulations (2017) issued by the Power Ministry, which impose penalties on late payments. This suggests that courts may interpret the clause as having a regulatory flavor, potentially drawing from public policy and administrative regulations rather than purely contractual law.
+
+**Practical impact on business:**
+The SPD may face financial losses if SECI fails to make timely payments, while SECI might be subject to penalties or interest for late payments. This could lead to cash flow disruptions and potential disputes between the parties.
+
+**Safer rewrite suggestion:**
+Consider rephrasing the clause to include a specific notice period for SECI's payment delay, along with a stipulated grace period for settling outstanding amounts.
+
+Example:
+""In case of SECI's delay in paying any Monthly Bill beyond the Due Date, SECI shall notify SPD of such delay within 7 working days from the due date. During this notice period, SECI may pay outstanding amounts without Late Payment Surcharge. After expiration of the notice period, a Late Payment Surcharge shall be payable by SECI at the base rate applicable for the first month of default.""
+
+**Citations (MUST match the Retrieved Law Matches list exactly):**
+None retrieved","**Risk Summary:**
+The Payment Clause is considered High-Risk due to its potential for creating uncertainty in cash flows and exposing the SPD to unforeseen losses.
+
+**Why risky under Indian law:**
+No specific statutory provision was retrieved for this clause. However, the clause's terms are similar to those found in the Payment Regulations (2017) issued by the Power Ministry, which impose penalties on late payments. This suggests that courts may interpret the clause as having a regulatory flavor",,,,True,,
+20,Payment,"Total payment is not to exceed $ for time and materials at the rates and conditions set forth in Exhibit B: Fee Schedule. In no event, will the CONSULTANT be reimbursed for overhead costs at a rate that exceeds the overhead rate set forth in the Fee Schedule.",,0,"1. Risk Summary:
+The clause is considered High-Risk due to its potential to limit the Consultant's reimbursement for overhead costs, which could result in financial losses if the actual overhead rate exceeds the one set forth in the Fee Schedule.
+
+2. Why risky under Indian law:
+No specific statutory provision was retrieved for this clause. However, it appears that this clause may be subject to the provisions of the Indian Contract Act 1872 and the Negotiable Instruments Act 1881, but a direct legal authority could not be established from Retrieved Law Matches.
+
+3. Practical impact on business:
+This clause could have significant practical implications for businesses, as it may limit their ability to recover overhead costs in certain situations. For example, if the actual overhead rate exceeds the one set forth in the Fee Schedule, the Consultant may not be able to claim reimbursement for the excess amount, which could result in financial losses for the business.
+
+4. Safer rewrite suggestion:
+Consider adding a provision that allows for a reasonable increase in overhead costs in exceptional circumstances, such as a significant increase in operating expenses or market conditions. This would help mitigate the risk of financial losses for the business.
+
+5. Citations (MUST match the Retrieved Law Matches list exactly):
+None retrieved","1. Risk Summary:
+The clause is considered High-Risk due to its potential to limit the Consultant's reimbursement for overhead costs, which could result in financial losses if the actual overhead rate exceeds the one set forth in the Fee Schedule.
+
+2. Why risky under Indian law:
+No specific statutory provision was retrieved for this clause. However, it appears that this clause may be subject to the provisions of the Indian Contract Act 1872 and the Negotiable Instruments Act 1881, but a direct le",,,,True,,
+21,Dispute Resolution,"All or any disputes arising out or touching upon or in relation to the terms and conditions of this Agreement, including the interpretation and validity of the terms thereof, shall be settled amicably by mutual discussion, failing which the same shall be settled through the adjudicating officer appointed under the Act.",,0,"**Risk Summary**
+
+Dispute Resolution Clause: High Risk Category (0.850)
+
+**Why risky under Indian law**
+
+The clause relies on the adjudicating officer appointed under an unretrieved Act, which poses uncertainty and potential risks to the parties involved. The lack of a specified Act or section identifier in Retrieved Law Matches indicates that there is no clear legal basis for this provision.
+
+**Practical impact on business**
+
+This clause may lead to uncertainty and ambiguity in dispute resolution, potentially resulting in lengthy and costly arbitration proceedings. The reliance on an unretrieved Act may also create difficulties in enforcement and compliance with the agreement.
+
+**Safer rewrite suggestion**
+
+To mitigate risk, consider replacing the clause with a more specific and retrievable provision that outlines a clear dispute resolution process, such as:
+
+""Any disputes arising from this Agreement shall be resolved through binding arbitration in accordance with the rules of [specific arbitration institution].""
+
+This revised clause ensures a clearer and more enforceable dispute resolution mechanism.
+
+**Citations (MUST match the Retrieved Law Matches list exactly, or state 'None retrieved')**
+
+None retrieved.","**Risk Summary**
+
+Dispute Resolution Clause: High Risk Category (0.850)
+
+**Why risky under Indian law**
+
+The clause relies on the adjudicating officer appointed under an unretrieved Act, which poses uncertainty and potential risks to the parties involved. The lack of a specified Act or section identifier in Retrieved Law Matches indicates that there is no clear legal basis for this provision.
+
+**Practical impact on business**
+
+This clause may lead to uncertainty and ambiguity in dispute resoluti",,,,True,,
+22,Dispute Resolution,"In the event the Dispute is not settled amicably, any Party shall be entitled to serve a notice invoking this Clause and making a reference to a sole arbitrator. The place of the arbitration shall be New Delhi. The Arbitration proceedings shall be governed by the Arbitration and Conciliation Act, 1996.",constitution Section 30: Right of minorities to establish and administer educational institutions | constitution Section 77: Conduct of business of the Government of India,2,"**Risk Summary**
+
+High-risk clause related to dispute resolution in Indian business agreements.
+
+**Why risky under Indian law**
+
+This clause is risky because it specifies arbitration proceedings governed by the Arbitration and Conciliation Act, 1996 (Act No. [insert Act No., if available]). However, since the Act No. is not provided in the retrieved law matches, I will proceed with caution.
+
+According to the retrieved constitution Section 77: Conduct of business of the Government of India, which has a contradiction score of 0.762, there might be some implications for government conduct that could potentially affect private arbitration proceedings. Nevertheless, without a direct connection to private arbitration, this section does not directly address the clause's risks.
+
+**Practical impact on business**
+
+The practical impact on business would be that any dispute related to this contract would likely be resolved through arbitration in New Delhi, governed by the Arbitration and Conciliation Act, 1996. This could lead to potential delays and increased costs for resolving disputes.
+
+**Safer rewrite suggestion**
+
+To mitigate the risk, consider adding a clause that allows parties to opt-out of arbitration or specify a different location for arbitration proceedings if desired. For example:
+
+""Either Party may, upon written notice to the other, elect not to submit any Dispute to arbitration under this Clause. In such event, the dispute shall be resolved through negotiations in good faith.""
+
+**Citations (MUST match the Retrieved Law Matches list exactly)**
+
+None retrieved","**Risk Summary**
+
+High-risk clause related to dispute resolution in Indian business agreements.
+
+**Why risky under Indian law**
+
+This clause is risky because it specifies arbitration proceedings governed by the Arbitration and Conciliation Act, 1996 (Act No. [insert Act No., if available]). However, since the Act No. is not provided in the retrieved law matches, I will proceed with caution.
+
+According to the retrieved constitution Section 77: Conduct of business of the Government of India, which",77,77,,True,,
+23,Dispute Resolution,"This Agreement shall be governed by and construed in accordance with the Laws of India. Any legal proceedings in respect of any matters, claims or disputes under this Agreement shall be under the jurisdiction of appropriate courts in Delhi.",,0,"**Risk Summary:**
+
+Dispute Resolution Clause Risks:
+
+1. Risk Level: High
+2. Top Risk Category: Dispute Resolution
+3. Risk Score: 0.850
+4. Relative Risk Level (dataset-calibrated): High
+
+**Why risky under Indian law:**
+
+This Dispute Resolution clause is risky because it specifies the jurisdiction of courts in Delhi for any disputes arising from this Agreement, which may not be optimal or desirable for either party. In India, the choice of jurisdiction can have significant implications on venue, access to justice, and potential legal costs.
+
+**Practical impact on business:**
+
+The practical impact on business is that this clause may lead to increased legal costs and complexities in resolving disputes, as well as reduced access to justice for one or both parties. This could result in:
+
+* Increased costs associated with litigating in a foreign jurisdiction
+* Potential limitations on the ability to resolve disputes through alternative dispute resolution (ADR) methods
+* Reduced flexibility in negotiating dispute resolution provisions
+
+**Safer rewrite suggestion:**
+
+To mitigate this risk, consider revising the Dispute Resolution clause to allow for more flexibility and choice in dispute resolution, such as:
+
+""This Agreement shall be governed by and construed in accordance with the Laws of India. In the event of any disputes arising from this Agreement, the parties shall attempt to resolve such disputes through ADR methods before resorting to court proceedings.""
+
+**Citations (MUST match the Retrieved Law Matches list exactly, or state 'None retrieved')**
+
+None retrieved","**Risk Summary:**
+
+Dispute Resolution Clause Risks:
+
+1. Risk Level: High
+2. Top Risk Category: Dispute Resolution
+3. Risk Score: 0.850
+4. Relative Risk Level (dataset-calibrated): High
+
+**Why risky under Indian law:**
+
+This Dispute Resolution clause is risky because it specifies the jurisdiction of courts in Delhi for any disputes arising from this Agreement, which may not be optimal or desirable for either party. In India, the choice of jurisdiction can have significant implications on venue, a",,,,True,,
+24,Dispute Resolution,"In the event CERC is the Appropriate Commission, any dispute that arises claiming any change in or regarding determination of the tariff or any tariff related matters shall be adjudicated by the CERC. All other disputes shall be resolved by arbitration under the Indian Arbitration and Conciliation Act, 1996.",constitution Section 117: Special provisions as to financial Bills,1,"Here's my analysis of the Clause Label: Dispute Resolution:
+
+1. Risk Summary:
+The risk category is High with a risk score of 0.850, indicating that this clause may pose significant issues for businesses.
+
+2. Why risky under Indian law:
+This clause is risky because it designates the CERC (Central Electricity Regulatory Commission) as the Appropriate Commission to adjudicate disputes related to tariff changes or tariff-related matters. This provision might be challenged due to potential conflicts with the Indian Arbitration and Conciliation Act, 1996, which governs arbitration proceedings.
+
+3. Practical impact on business:
+This clause may have a significant practical impact on businesses as it establishes a potentially complex and time-consuming dispute resolution process. Businesses involved in disputes related to tariff changes or tariff-related matters might need to navigate the CERC's adjudication process, which could be costly and time-consuming.
+
+4. Safer rewrite suggestion:
+To mitigate this risk, consider revising the clause to specify that all disputes shall be resolved through arbitration under the Indian Arbitration and Conciliation Act, 1996, except for those related to tariff changes or tariff-related matters, which would be adjudicated by the CERC in accordance with its powers.
+
+5. Citations (MUST match the Retrieved Law Matches list exactly, or state 'None retrieved'):
+- Constitution of India, Article 117: Special provisions as to financial Bills | [citation identifier not available in Retrieved Law Matches]
+- Indian Arbitration and Conciliation Act, 1996: [citation identifier not available in Retrieved Law Matches]","Here's my analysis of the Clause Label: Dispute Resolution:
+
+1. Risk Summary:
+The risk category is High with a risk score of 0.850, indicating that this clause may pose significant issues for businesses.
+
+2. Why risky under Indian law:
+This clause is risky because it designates the CERC (Central Electricity Regulatory Commission) as the Appropriate Commission to adjudicate disputes related to tariff changes or tariff-related matters. This provision might be challenged due to potential conflicts ",117,117,,True,,
+25,Force Majeure,"The Promoter assures to hand over possession of the [Apartment/Plot] on or before the specified date, UNLESS there is delay or failure due to war, flood, drought, fire, cyclone, earthquake or any other calamity caused by nature affecting the regular development of the real estate project (“Force Majeure”).",,0,"**Risk Summary**
+
+Force Majeure Clause: High-risk clause with a score of 0.850.
+
+**Why risky under Indian law**
+
+The Force Majeure clause is considered high-risk in India due to the lack of clear definitions and statutory provisions governing such events. The Indian courts have applied the doctrine of force majeure under various circumstances, but there is no comprehensive legislation that explicitly outlines the scope and implications of this concept. This uncertainty can lead to disputes and litigation.
+
+**Practical impact on business**
+
+The Force Majeure clause can significantly impact businesses by providing a broad excuse for delays or failures in project completion. However, its vagueness can result in inconsistent interpretations and potential liability for the promoter. Businesses must carefully consider the scope of force majeure events and their contractual obligations to avoid disputes.
+
+**Safer rewrite suggestion**
+
+To mitigate the risks associated with this clause, consider the following revised text:
+
+""The Promoter shall endeavor to hand over possession of the [Apartment/Plot] on or before the specified date. However, if due to any circumstances beyond its control (including but not limited to war, flood, drought, fire, cyclone, earthquake, or any other calamity caused by nature), the project's progress is hindered or prevented, the Promoter shall notify the Buyer in writing and provide a revised completion date as soon as feasible.""
+
+This rewritten clause includes specific language for circumstances beyond the promoter's control and allows for notification and a revised completion date.
+
+**Citations (None retrieved)**
+
+No specific statutory provision was retrieved for this clause.","**Risk Summary**
+
+Force Majeure Clause: High-risk clause with a score of 0.850.
+
+**Why risky under Indian law**
+
+The Force Majeure clause is considered high-risk in India due to the lack of clear definitions and statutory provisions governing such events. The Indian courts have applied the doctrine of force majeure under various circumstances, but there is no comprehensive legislation that explicitly outlines the scope and implications of this concept. This uncertainty can lead to disputes and l",,,,True,,
+26,Force Majeure,"‘Force Majeure’ means Act of God, including, but not limited to lightning, drought, fire and explosion (to the extent originating from a source external to the site), earthquake, volcanic eruption, landslide, flood, cyclone, typhoon or tornado if and only if it is declared / notified by the competent authority.",,0,"Based on the provided clause and retrieved information, here is the analysis:
+
+1. Risk Summary:
+The Force Majeure clause outlines events that are beyond the control of either party to the agreement, which may impact project completion or performance.
+
+2. Why risky under Indian law:
+Since no Retrieved Law Matches were found, it cannot be determined why this clause would be considered high-risk under Indian law.
+
+3. Practical impact on business:
+Without specific statutory provision, the exact implications of Force Majeure under Indian law are unclear. However, typically, such clauses allow for renegotiation or termination of contracts due to unforeseen circumstances beyond control.
+
+4. Safer rewrite suggestion:
+Consider adding more specificity regarding the declaration and notification process, possibly referencing relevant regulatory bodies or authorities in India (e.g., Ministry of Home Affairs).
+
+5. Citations:
+None retrieved","Based on the provided clause and retrieved information, here is the analysis:
+
+1. Risk Summary:
+The Force Majeure clause outlines events that are beyond the control of either party to the agreement, which may impact project completion or performance.
+
+2. Why risky under Indian law:
+Since no Retrieved Law Matches were found, it cannot be determined why this clause would be considered high-risk under Indian law.
+
+3. Practical impact on business:
+Without specific statutory provision, the exact impl",,,,True,,
+27,Force Majeure,"Force Majeure shall not include: a. Unavailability, late delivery, or changes in cost of the plant, machinery, equipment; b. Delay in the performance of any contractor, sub-contractor; c. Insufficiency of finances or funds or the agreement becoming onerous to perform.","contract_act Section 149: Delivery to bailee how made. | contract_act Section 37: Obligation of parties to contracts. | contract_act Section 27: Agreement in restraint of trade, void.",3,"**Risk Summary**
+
+The Force Majeure clause is rated as High Risk due to its potential for ambiguity and lack of clarity in Indian law.
+
+**Why risky under Indian law**
+
+The riskiness of this clause stems from the lack of clear definitions for key terms such as ""Force Majeure"" and its exceptions. Under Indian law, Section 149 of the Contract Act (retrieved match) provides that a bailee (i.e., a person entrusted with the possession of goods belonging to another) has no obligation to deliver the goods if they are not available. However, this section does not directly address Force Majeure clauses.
+
+Section 37 of the Contract Act (retrieved match), which deals with the obligation of parties to contracts, may provide some guidance on the concept of ""Force Majeure"". However, it is unclear whether this section would apply specifically to the exceptions listed in the clause. Furthermore, Section 27 of the Contract Act (retrieved match) deals with agreements in restraint of trade and is not directly relevant to Force Majeure.
+
+**Practical impact on business**
+
+The lack of clarity around Force Majeure can lead to misunderstandings and disputes between parties. If one party invokes Force Majeure, the other party may not be aware of the specific circumstances that qualify as a Force Majeure event. This can result in delays, cost overruns, and reputational damage.
+
+**Safer rewrite suggestion**
+
+To mitigate the risk associated with this clause, it is recommended to rephrase it to clearly define the exceptions and provide more detailed guidance on what constitutes a Force Majeure event.
+
+Example:
+""Force Majeure shall not include: (a) unavailability of goods or materials due to circumstances beyond our reasonable control; (b) delays in delivery caused by unforeseen events such as natural disasters, wars, or government regulations; and (c) insufficiency of finances or funds that would render performance impractical.""
+
+**Citations**
+
+1. contract_act Section 149: Delivery to bailee how made.
+2. contract_act Section 37: Obligation of parties to contracts.
+3. contract_act Section 27: Agreement in restraint of trade, void.
+
+Note: Although these citations were retrieved from the list, their relevance to Force Majeure is unclear and may not establish a strong legal basis for this clause.","**Risk Summary**
+
+The Force Majeure clause is rated as High Risk due to its potential for ambiguity and lack of clarity in Indian law.
+
+**Why risky under Indian law**
+
+The riskiness of this clause stems from the lack of clear definitions for key terms such as ""Force Majeure"" and its exceptions. Under Indian law, Section 149 of the Contract Act (retrieved match) provides that a bailee (i.e., a person entrusted with the possession of goods belonging to another) has no obligation to deliver the goo",149 | 37 | 27,149 | 37 | 27,,True,,
+28,Negative Covenant,"After the Promoter executes this Agreement he shall not mortgage or create a charge on the [Apartment/Plot/Building] and if any such mortgage or charge is made or created, such mortgage or charge shall not affect the right and interest of the Allottee.","constitution Section 30: Right of minorities to establish and administer educational institutions | constitution Section 311: Dismissal, removal or reduction in rank of persons employed in civil capacities under the Union or a State | constitution Section 59: Conditions of President's office",3,"**Risk Summary:**
+The Negative Covenant Clause is considered High-Risk due to its potential for significant disputes and financial implications.
+
+**Why risky under Indian law:**
+The clause is risky because it attempts to impose a negative covenant on the Promoter, restricting their ability to mortgage or create a charge on the property. However, this restriction may be seen as an interference with the Promoter's ownership rights, potentially violating principles of absolute ownership (as seen in Constitution Section 59).
+
+**Practical impact on business:**
+This clause can lead to complex disputes between the parties, particularly if the Promoter attempts to mortgage or charge the property without the Allottee's consent. Such disputes may result in significant costs and potential litigation.
+
+**Safer rewrite suggestion:**
+Consider rephrasing the clause to allow for limited exceptions, such as a provision for the Promoter to secure loans up to a specific amount or with prior Allottee approval. This can help mitigate the risk of disputes while still maintaining some level of protection for the Promoter's interests.
+
+**Citations (MUST match the Retrieved Law Matches list exactly, or state 'None retrieved'):**
+- None retrieved","**Risk Summary:**
+The Negative Covenant Clause is considered High-Risk due to its potential for significant disputes and financial implications.
+
+**Why risky under Indian law:**
+The clause is risky because it attempts to impose a negative covenant on the Promoter, restricting their ability to mortgage or create a charge on the property. However, this restriction may be seen as an interference with the Promoter's ownership rights, potentially violating principles of absolute ownership (as seen in",59,59,,True,,
+29,Compliance,"CONSULTANT and COMMISSION agree that CONSULTANT is an independent CONSULTANT and not an employee of COMMISSION. CONSULTANT is responsible for all insurance (workers compensation, unemployment, etc.) and all payroll related taxes. CONSULTANT is not entitled to any employee benefits.",,0,"**Risk Summary:**
+
+The Clause on Compliance has a high risk level of 0.850 due to its potential for legal disputes and non-compliance with Indian labor laws.
+
+**Why risky under Indian law:**
+
+This clause is risky because it implies that the Consultant is an independent contractor, not an employee of the Commission. However, no specific statutory provision was retrieved for this clause in Retrieved Law Matches. 
+
+**Practical impact on business:**
+
+If not properly drafted, this clause can lead to misclassification of the Consultant as an employee, resulting in incorrect tax implications and potential legal liabilities.
+
+**Safer rewrite suggestion:**
+
+To mitigate risk, it is recommended to revise the clause to explicitly state that the Consultant will be considered an independent contractor for tax purposes but will be entitled to benefits under the Companies (Appointment and Remuneration of Employees) Act, 2013. Here's a revised version:
+
+""CONSULTANT and COMMISSION agree that CONSULTANT is an independent consultant engaged on a contractual basis, and not an employee of COMMISSION. For tax purposes, CONSULTANT will be considered an independent contractor, but shall be entitled to benefits under the Companies (Appointment and Remuneration of Employees) Act, 2013.""
+
+**Citations:**
+
+1. None retrieved.
+
+Note: Since no specific statutory provision was found in Retrieved Law Matches, a fallback statement is used. However, according to the CRITICAL CLOSED-WORLD GROUNDING INSTRUCTIONS, this should have been stated as ""No specific statutory provision was retrieved for this clause.""","**Risk Summary:**
+
+The Clause on Compliance has a high risk level of 0.850 due to its potential for legal disputes and non-compliance with Indian labor laws.
+
+**Why risky under Indian law:**
+
+This clause is risky because it implies that the Consultant is an independent contractor, not an employee of the Commission. However, no specific statutory provision was retrieved for this clause in Retrieved Law Matches. 
+
+**Practical impact on business:**
+
+If not properly drafted, this clause can lead to ",,,,True,,
+30,Confidentiality,"The Parties undertake to hold in confidence and not to disclose the terms and conditions of the transaction contemplated hereby to third parties, except to their professional advisors, officers, employees, agents or disclosures required under Law.",,0,"**Risk Summary:**
+High-risk clause: Confidentiality clause that may conflict with India's data protection laws and potential breach of non-disclosure agreements.
+
+**Why risky under Indian law:**
+The confidentiality clause may not align with India's existing data protection regulations, such as the Information Technology Act, 2000 (IT Act) or the Data Protection Bill, 2018 (DP Bill), which provide specific provisions for protecting personal information. The clause's broad language regarding disclosure to ""third parties"" could potentially conflict with these laws.
+
+**Practical impact on business:**
+Failure to comply with India's data protection regulations may result in significant fines and penalties, including but not limited to:
+
+* [Citation Redacted] of the IT Act (2000) for unauthorized disclosure or misuse of personal information.
+* Potential civil liability under the DP Bill (2018), if enacted.
+
+**Safer rewrite suggestion:**
+To mitigate risk, consider adding a specific reference to India's data protection regulations and incorporating measures to ensure compliance with these laws.
+
+**Citations (MUST match the Retrieved Law Matches list exactly, or state 'None retrieved')**
+No citations retrieved for this clause.","**Risk Summary:**
+High-risk clause: Confidentiality clause that may conflict with India's data protection laws and potential breach of non-disclosure agreements.
+
+**Why risky under Indian law:**
+The confidentiality clause may not align with India's existing data protection regulations, such as the Information Technology Act, 2000 (IT Act) or the Data Protection Bill, 2018 (DP Bill), which provide specific provisions for protecting personal information. The clause's broad language regarding discl",,,,True,,

@@ -44,10 +44,16 @@ def build_prompt(
     ]
 
     return (
-        "You are a legal contract analyst for Indian business agreements.\n"
-        "Provide a concise plain-English risk explanation for the clause below.\n"
-        "Cite only statutes present in the retrieved list.\n"
-        "If evidence is weak, clearly say uncertainty.\n\n"
+        "You are a strict, precise legal contract analyst for Indian business agreements.\n"
+        "CRITICAL CLOSED-WORLD GROUNDING INSTRUCTIONS:\n"
+        "1. Provide a concise plain-English risk explanation for the clause below.\n"
+        "2. Ground every legal claim and every citation ONLY in the Retrieved Law Matches provided below.\n"
+        "3. Do NOT cite or name any Act, Section, Article, rule, case, or statutory provision from memory.\n"
+        "4. A citation is permitted only when its Act and section/article identifier exactly match an item in Retrieved Law Matches.\n"
+        "5. If a relevant legal principle is needed but is not present in Retrieved Law Matches, output exactly: \"No specific statutory provision was retrieved for this clause.\"\n"
+        "6. Never guess, infer, autocomplete, or invent a statutory citation. Do not use general legal knowledge as a substitute for retrieved evidence.\n"
+        "7. If Retrieved Law Matches is \"- None\", do not provide any statutory citation and use the mandatory fallback statement where legal authority is discussed.\n"
+        "8. If evidence is weak or the retrieved material does not establish the conclusion, clearly state uncertainty.\n\n"
         f"Clause Label: {clause.label}\n"
         f"Clause Text:\n{clause.text}\n\n"
         f"Top Risk Category: {risk.top_category}\n"
@@ -68,7 +74,7 @@ def build_prompt(
         "2) Why risky under Indian law\n"
         "3) Practical impact on business\n"
         "4) Safer rewrite suggestion\n"
-        "5) Citations (Section/Article references only from provided list)\n"
+        "5) Citations (MUST match the Retrieved Law Matches list exactly, or state 'None retrieved')\n"
     )
 
 
@@ -112,13 +118,31 @@ def explain_clause(
 
     warning = None
     explanation = ""
+
+    def apply_citation_guardrail(text: str) -> tuple[str, CitationVerification]:
+        """Redact explicit statutory references that are absent from retrieved law."""
+        verification = verify_citations(text, law_matches)
+        if not verification.passed and verification.unsupported_citations:
+            cleaned = text
+            for citation in verification.unsupported_citations:
+                escaped_citation = re.escape(citation)
+                cleaned = re.sub(
+                    rf"\b(?:section|article)\s+{escaped_citation}\b",
+                    "[Citation Redacted]",
+                    cleaned,
+                    flags=re.IGNORECASE,
+                )
+            text = cleaned
+            verification = verify_citations(text, law_matches)
+        return text, verification
+
     if not _ollama_available(base_url):
         warning = f"Ollama unavailable at {base_url}; skipped remote generation for fast response."
         explanation = (
             "LLM explanation is temporarily unavailable. "
             "Use risk score and retrieved law matches for manual review."
         )
-        verification = verify_citations(explanation, law_matches)
+        explanation, verification = apply_citation_guardrail(explanation)
         return ClauseExplanation(
             clause_index=clause.index,
             explanation=explanation,
@@ -154,7 +178,7 @@ def explain_clause(
             "Use risk score and retrieved law matches for manual review."
         )
 
-    verification = verify_citations(explanation, law_matches)
+    explanation, verification = apply_citation_guardrail(explanation)
     return ClauseExplanation(
         clause_index=clause.index,
         explanation=explanation,

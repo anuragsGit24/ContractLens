@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-QDRANT_URL = "https://5d12e4e3-03ea-4848-b40c-a1ed6490a4c5.eu-central-1-0.aws.cloud.qdrant.io"
+QDRANT_URL = "https://d13e3e61-6ad5-4b0d-86f0-d0114d56c364.eu-central-1-0.aws.cloud.qdrant.io"
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 
 if not QDRANT_API_KEY:

@@ -1,0 +1,182 @@
+[
+  {
+    "clause_id": "C001",
+    "text": "In the event of a breach of contract where a penalty is stipulated for, the party complaining of the breach is entitled to receive exorbitant compensation exceeding the actual damage or loss caused.",
+    "ground_truth": {
+      "risk_level": "HIGH",
+      "relevant_statute_sections": ["ICA 74"],
+      "contradicts_with": []
+    }
+  },
+  {
+    "clause_id": "C002",
+    "text": "Compensation for a breach of contract shall not exceed the actual damage or loss caused, and exorbitant penalties beyond reasonable compensation shall not be enforced.",
+    "ground_truth": {
+      "risk_level": "LOW",
+      "relevant_statute_sections": ["IPC 469", "ICA 30"],
+      "contradicts_with": ["C001"]
+    }
+  },
+  {
+    "clause_id": "C003",
+    "text": "Every agreement by which anyone is restrained from exercising a lawful profession, trade or business of any kind, shall be considered valid and legally binding.",
+    "ground_truth": {
+      "risk_level": "HIGH",
+      "relevant_statute_sections": ["ICA 27"],
+      "contradicts_with": []
+    }
+  },
+  {
+    "clause_id": "C004",
+    "text": "Every agreement by which anyone is restrained from exercising a lawful profession, trade or business of any kind, is to that extent void.",
+    "ground_truth": {
+      "risk_level": "LOW",
+      "relevant_statute_sections": ["ICA 27", "CONSTITUTION 19"],
+      "contradicts_with": ["C003"]
+    }
+  },
+  {
+    "clause_id": "C005",
+    "text": "Whoever, by deceiving any person, fraudulently or dishonestly induces the person so deceived to deliver any property, shall be permitted to retain such property without legal consequence.",
+    "ground_truth": {
+      "risk_level": "HIGH",
+      "relevant_statute_sections": ["IPC 415"],
+      "contradicts_with": []
+    }
+  },
+  {
+    "clause_id": "C006",
+    "text": "Whoever fraudulently or dishonestly induces a person to deliver property commits the offence of cheating and shall be liable for prosecution.",
+    "ground_truth": {
+      "risk_level": "LOW",
+      "relevant_statute_sections": ["IPC 415", "IPC 420"],
+      "contradicts_with": ["C005"]
+    }
+  },
+  {
+    "clause_id": "C007",
+    "text": "The State reserves the right to deny to certain persons equality before the law and the equal protection of the laws based on arbitrary classifications.",
+    "ground_truth": {
+      "risk_level": "HIGH",
+      "relevant_statute_sections": ["CONSTITUTION 14"],
+      "contradicts_with": []
+    }
+  },
+  {
+    "clause_id": "C008",
+    "text": "The State shall not deny to any person equality before the law or the equal protection of the laws within the territory of India.",
+    "ground_truth": {
+      "risk_level": "LOW",
+      "relevant_statute_sections": ["CONSTITUTION 14"],
+      "contradicts_with": ["C007"]
+    }
+  },
+  {
+    "clause_id": "C009",
+    "text": "A person entrusted with property may dishonestly misappropriate or convert to his own use that property without committing a criminal breach of trust.",
+    "ground_truth": {
+      "risk_level": "HIGH",
+      "relevant_statute_sections": ["IPC 405"],
+      "contradicts_with": []
+    }
+  },
+  {
+    "clause_id": "C010",
+    "text": "Whoever, being in any manner entrusted with property, dishonestly misappropriates or converts to his own use that property, commits criminal breach of trust.",
+    "ground_truth": {
+      "risk_level": "LOW",
+      "relevant_statute_sections": ["IPC 405", "IPC 406"],
+      "contradicts_with": ["C009"]
+    }
+  },
+  {
+    "clause_id": "C011",
+    "text": "An agreement to do an act impossible in itself is perfectly valid and shall be strictly enforceable under the law.",
+    "ground_truth": {
+      "risk_level": "MEDIUM",
+      "relevant_statute_sections": ["IPC 99"],
+      "contradicts_with": []
+    }
+  },
+  {
+    "clause_id": "C012",
+    "text": "An agreement to do an act impossible in itself is inherently void and cannot be enforced.",
+    "ground_truth": {
+      "risk_level": "LOW",
+      "relevant_statute_sections": ["ICA 56"],
+      "contradicts_with": ["C011"]
+    }
+  },
+  {
+    "clause_id": "C013",
+    "text": "Whoever makes or publishes any imputation concerning any person intending to harm the reputation of such person shall not be guilty of defamation under any circumstances.",
+    "ground_truth": {
+      "risk_level": "HIGH",
+      "relevant_statute_sections": ["IPC 171G", "IPC 347"],
+      "contradicts_with": []
+    }
+  },
+  {
+    "clause_id": "C014",
+    "text": "Whoever, by words either spoken or intended to be read, makes or publishes any imputation concerning any person intending to harm their reputation, commits defamation.",
+    "ground_truth": {
+      "risk_level": "LOW",
+      "relevant_statute_sections": ["IPC 499", "IPC 500"],
+      "contradicts_with": ["C013"]
+    }
+  },
+  {
+    "clause_id": "C015",
+    "text": "Every agreement by which any party thereto is restricted absolutely from enforcing his rights under or in respect of any contract, by the usual legal proceedings, is valid.",
+    "ground_truth": {
+      "risk_level": "HIGH",
+      "relevant_statute_sections": ["ICA 28"],
+      "contradicts_with": []
+    }
+  },
+  {
+    "clause_id": "C016",
+    "text": "Every agreement by which any party thereto is restricted absolutely from enforcing his rights by the usual legal proceedings in the ordinary tribunals, is void.",
+    "ground_truth": {
+      "risk_level": "LOW",
+      "relevant_statute_sections": ["ICA 28"],
+      "contradicts_with": ["C015"]
+    }
+  },
+  {
+    "clause_id": "C017",
+    "text": "Whoever threatens another with any injury to his person, reputation or property, with intent to cause alarm, does not commit the offence of criminal intimidation.",
+    "ground_truth": {
+      "risk_level": "HIGH",
+      "relevant_statute_sections": ["IPC 195A", "IPC 298"],
+      "contradicts_with": []
+    }
+  },
+  {
+    "clause_id": "C018",
+    "text": "Whoever threatens another with any injury to his person, reputation or property, with intent to cause alarm to that person, commits criminal intimidation.",
+    "ground_truth": {
+      "risk_level": "LOW",
+      "relevant_statute_sections": ["IPC 503", "IPC 506"],
+      "contradicts_with": ["C017"]
+    }
+  },
+  {
+    "clause_id": "C019",
+    "text": "No High Court shall have the power to issue directions, orders or writs, including writs in the nature of habeas corpus, for the enforcement of any fundamental rights.",
+    "ground_truth": {
+      "risk_level": "HIGH",
+      "relevant_statute_sections": ["CONSTITUTION 32"],
+      "contradicts_with": []
+    }
+  },
+  {
+    "clause_id": "C020",
+    "text": "Every High Court shall have power to issue directions, orders or writs for the enforcement of any of the rights conferred by Part III of the Constitution.",
+    "ground_truth": {
+      "risk_level": "LOW",
+      "relevant_statute_sections": ["CONSTITUTION 32"],
+      "contradicts_with": ["C019"]
+    }
+  }
+]

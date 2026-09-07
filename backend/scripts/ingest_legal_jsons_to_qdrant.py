@@ -24,6 +24,16 @@ def _repo_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
+def _resolve_input_file(*candidates: str) -> Path:
+    root = _repo_root()
+    for candidate in candidates:
+        path = root / candidate
+        if path.exists():
+            return path
+    joined = ", ".join(str(root / c) for c in candidates)
+    raise FileNotFoundError(f"Input file not found. Tried: {joined}")
+
+
 def _load_backend_env() -> None:
     backend_env = Path(__file__).resolve().parents[1] / ".env"
     load_dotenv(dotenv_path=backend_env, override=False)
@@ -426,16 +436,19 @@ def main() -> None:
     model_name = os.getenv("EMBEDDING_MODEL", DEFAULT_EMBEDDING_MODEL)
     version = os.getenv("LEGAL_VERSION", "latest")
 
-    root = _repo_root()
-    data_dir = root / "data" / "json"
-
-    contract_path = data_dir / "indian_contract_act_1872_cleaned.json"
-    constitution_path = data_dir / "constitution_of_india.json"
-    ipc_path = data_dir / "ipc.json"
-
-    for p in [contract_path, constitution_path, ipc_path]:
-        if not p.exists():
-            raise SystemExit(f"Missing input file: {p}")
+    contract_path = _resolve_input_file(
+        "data/default/indian_contract_act_1872_cleaned.json",
+        "data/default/indian_contract_act_1872.json",
+        "data/json/indian_contract_act_1872_cleaned.json",
+    )
+    constitution_path = _resolve_input_file(
+        "data/default/constitution_of_india.json",
+        "data/json/constitution_of_india.json",
+    )
+    ipc_path = _resolve_input_file(
+        "data/default/ipc.json",
+        "data/json/ipc.json",
+    )
 
     print(f"Qdrant URL: {url}")
     print(f"Collection: {collection_name}")

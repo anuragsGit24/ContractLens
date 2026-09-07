@@ -26,6 +26,18 @@ def _load_backend_env() -> None:
     load_dotenv(dotenv_path=backend_env, override=False)
 
 
+def _resolve_ipc_path(root: Path) -> Path:
+    candidates = [
+        root / "data" / "json" / "ipc.json",
+        root / "data" / "default" / "ipc.json",
+    ]
+    for path in candidates:
+        if path.exists():
+            return path
+    tried = ", ".join(str(p) for p in candidates)
+    raise FileNotFoundError(f"IPC json not found. Tried: {tried}")
+
+
 def main() -> None:
     # Keep output readable: enable DEBUG only for our RAG logger, not for all third-party libs.
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
@@ -62,8 +74,8 @@ def main() -> None:
 
     # 2) End-to-end pipeline test (includes metadata filtering + reranking + debug logs)
     queries = [
-        "How to know that if I am not being scammed by a company while signing this contract?",
-        "Define punishment for an offence under IPC",
+        "If any provision of this Agreement is held invalid, the remainder shall continue in full force and effect. Consequently, this applies to Section 1.",
+        "The Promoter may terminate this Agreement for Sale without notice and forfeit the entire amount if the Allottee is delayed in payment by a single day.",
         "What is equality before law?",
     ]
 
@@ -79,7 +91,7 @@ def main() -> None:
 
     # 3) Vector-space self-retrieval sanity check using IPC Section 1
     root = _repo_root()
-    ipc_path = root / "data" / "json" / "ipc.json"
+    ipc_path = _resolve_ipc_path(root)
     ipc_data = json.loads(ipc_path.read_text(encoding="utf-8"))
     ipc_1 = next((x for x in ipc_data if isinstance(x, dict) and x.get("Section") == 1), None)
     if not ipc_1:
