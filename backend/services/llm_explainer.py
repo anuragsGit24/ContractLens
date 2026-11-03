@@ -153,14 +153,20 @@ def explain_clause(
         )
 
     try:
+        # Pass num_predict to keep generation concise and fast (~5-10s)
+        # Increase timeout to 75s so local LLMs (e.g. llama3.2) don't get terminated prematurely
         response = requests.post(
             f"{base_url}/api/generate",
             json={
                 "model": settings.ollama_model,
                 "prompt": prompt,
                 "stream": False,
+                "options": {
+                    "num_predict": 380,
+                    "temperature": 0.2,
+                },
             },
-            timeout=25,
+            timeout=75,
         )
         response.raise_for_status()
         payload = response.json()

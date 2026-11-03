@@ -86,3 +86,6 @@ C:\poppler
 Final structure should look like:
 
 C:\poppler\poppler-xx\Library\bin\pdftoppm.exe
+
+
+uvicorn backend.main:app --host 0.0.0.0 --port 8000

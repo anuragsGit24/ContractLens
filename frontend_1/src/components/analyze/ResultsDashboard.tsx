@@ -142,10 +142,11 @@ Evaluated against: Indian Contract Act 1872, IPC 1860, Constitution of India`;
         onSelectClause={(idx) => setSelectedClauseId(idx)}
       />
 
-      {/* 5. Side-by-Side Contradictions */}
+      {/* 5. Side-by-Side Contradictions with Evidence Highlighting */}
       <ContradictionCards
         contradictions={result.internal_contradictions}
         clauses={result.clauses}
+        explanations={result.explanations}
       />
 
       {/* 6. Clause Risk Matrix */}
@@ -160,8 +161,12 @@ Evaluated against: Indian Contract Act 1872, IPC 1860, Constitution of India`;
       {/* 7. Statutory Law Cross-References (Qdrant RAG) */}
       <LawMatches lawChecks={result.law_checks} />
 
-      {/* 8. AI Legal Explanations */}
-      <AIExplainer explanations={result.explanations} />
+      {/* 8. AI Legal Explanations & Safer Clause Rewrites */}
+      <AIExplainer
+        explanations={result.explanations}
+        clauses={result.clauses}
+        risks={result.risks}
+      />
     </div>
   );
 };
